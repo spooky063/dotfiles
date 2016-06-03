@@ -1,7 +1,7 @@
 [ -r /etc/bashrc ] && source /etc/bashrc
 [ -r /etc/bash_completion ] && source /etc/bash_completion
 
-# If not already exist
+# Alias
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -31,9 +31,7 @@ __vcs_name() {
     fi
 }
 
-##
-# PS1
-##
+# Prompt
 export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_HIDE_IF_PWD_IGNORED=1

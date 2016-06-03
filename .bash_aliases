@@ -48,5 +48,4 @@ alias .....='cd ../../../..'
 # Only root user
 alias dropmem='dropram && dropswap && dropram'
 alias dropram='sync && echo 3 > /proc/sys/vm/drop_caches'
-
 alias dropswap='swapoff -a && swapon -a'

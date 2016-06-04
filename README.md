@@ -13,6 +13,8 @@ source .bashrc
 # Git
 curl -O https://github.com/Spooky063/start-desk/blob/master/.gitconfig
 # Change info name and email
+# git config --global user.name "*fullname*"
+# git config --global user.email "*email*"
 source .gitconfig
 
 # Tmux

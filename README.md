@@ -3,26 +3,26 @@
 ## Install
 ```
 # Alias
-curl -O https://github.com/Spooky063/start-desk/blob/master/.bash_aliases
+curl -O https://raw.githubusercontent.com/Spooky063/start-desk/master/.bash_aliases
 source .bash_aliases
 
 # Bashrc
-curl -O https://github.com/Spooky063/start-desk/blob/master/.bashrc
+curl -O https://raw.githubusercontent.com/Spooky063/start-desk/master/.bashrc
 source .bashrc
 
 # Git
-curl -O https://github.com/Spooky063/start-desk/blob/master/.gitconfig
+curl -O https://raw.githubusercontent.com/Spooky063/start-desk/master/.gitconfig
 # Change info name and email
 # git config --global user.name "*fullname*"
 # git config --global user.email "*email*"
 source .gitconfig
 
 # Tmux
-curl -O https://github.com/Spooky063/start-desk/blob/master/.tmux.conf
+curl -O https://raw.githubusercontent.com/Spooky063/start-desk/master/.tmux.conf
 source .tmux.conf
 
 # Vim
-curl -O https://github.com/Spooky063/start-desk/blob/master/.vimrc
+curl -O https://raw.githubusercontent.com/Spooky063/start-desk/master/.vimrc
 source .vimrc
 ```
 

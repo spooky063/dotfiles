@@ -24,10 +24,10 @@ __has_parent_dir () {
 __vcs_name() {
     if [ -d .svn ]; then
         echo " (svn)";
+    elif __has_parent_dir ".svn"; then
+        echo " (svn)";
     elif __has_parent_dir ".git"; then
         echo "$(__git_ps1 ' (%s)')";
-    elif __has_parent_dir ".hg"; then
-        echo "$(hg branch)"
     fi
 }
 

@@ -49,3 +49,7 @@ alias .....='cd ../../../..'
 alias dropmem='dropram && dropswap && dropram'
 alias dropram='sync && echo 3 > /proc/sys/vm/drop_caches'
 alias dropswap='swapoff -a && swapon -a'
+
+# Docker configuration
+alias gulp='docker run --rm -v $(pwd):/opt gulp gulp $1'
+alias grunt='docker run --rm -v $(pwd):/opt grunt grunt $1'

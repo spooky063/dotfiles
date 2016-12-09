@@ -44,6 +44,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+# Custom
+alias maxmem='ps aux  | awk '{print $6/1024 " MB\t\t" $11}'  | sort -rn | head -20'
+
 # Clear Memory
 # Only root user
 alias dropmem='dropram && dropswap && dropram'

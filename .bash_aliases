@@ -58,16 +58,11 @@ alias .....='cd ../../../..'
 # Clear Memory
 # --> ONLY ROOT USER
 #------------------------------------------////
-alias dropmem='dropram && dropswap && dropram'
-alias dropram='sync && echo 3 > /proc/sys/vm/drop_caches'
-alias dropswap='swapoff -a && swapon -a'
-
-#------------------------------------------////
-# Docker:
-#------------------------------------------////
-alias npmi='docker run --rm -v $(pwd):/opt node-tools npm install $1'
-alias gulp='docker run --rm -v $(pwd):/opt node-tools gulp $1'
-alias grunt='docker run --rm -v $(pwd):/opt node-tools grunt $1'
+if [ `id -u` = 0 ]; then
+  alias dropmem='dropram && dropswap && dropram'
+  alias dropram='sync && echo 3 > /proc/sys/vm/drop_caches'
+  alias dropswap='swapoff -a && swapon -a'
+fi
 
 #------------------------------------------////
 # Custom Extract / Compress:

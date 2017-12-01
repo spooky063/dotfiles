@@ -64,9 +64,7 @@ sudo chmod +x /usr/local/bin/wp
 ```
 
 ```bash
-sudo sh -c "curl -L https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash > /opt/wp-completion.bash" \
-sudo chmod +x /opt/wp-completion.bash
-echo "source /opt/wp-completion.bash" >> ~/.bash_profile
+sudo sh -c "curl -L https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash > /etc/bash_completion.d/wp-completion"
 ```
 
 ### Navigateur

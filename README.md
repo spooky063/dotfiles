@@ -71,7 +71,7 @@ sudo apt-get update \
 sudo apt-get install firefox-mozilla-build
 ```
 
-### Outils (facultatif, voir Docker plus bas)
+### Outils
 
 #### Drush
 ```bash
@@ -125,49 +125,5 @@ composer () {
         --volume /etc/group:/etc/group:ro \
         --volume $(pwd):/app \
         composer "$@"
-}
-```
-
-#### Drush
-```bash
-docker pull drush/drush
-```
-
-```bash
-# ~/.bashrc or ~/.zshrc
-drush () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user $(id -u):$(id -g) \
-        --volume /etc/passwd:/etc/passwd:ro \
-        --volume /etc/group:/etc/group:ro \
-        --volume $(pwd):/app \
-        drush/drush "$@"
-}
-```
-
-#### Wp-cli
-```bash
-docker pull wordpress:cli
-```
-
-```bash
-# ~/.bashrc or ~/.zshrc
-wp () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user $(id -u):$(id -g) \
-        --volume /etc/passwd:/etc/passwd:ro \
-        --volume /etc/group:/etc/group:ro \
-        --volume $(pwd):/var/www/html \
-        wordpress:cli "$@"
 }
 ```

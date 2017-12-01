@@ -167,7 +167,7 @@ wp () {
         --user $(id -u):$(id -g) \
         --volume /etc/passwd:/etc/passwd:ro \
         --volume /etc/group:/etc/group:ro \
-        --volume $(pwd):/app \
+        --volume $(pwd):/var/www/html \
         wordpress:cli "$@"
 }
 ```

@@ -48,26 +48,13 @@ wget -qO- https://www.gitkraken.com/download/linux-deb gitkraken.deb \
 sudo dpkg -i gitkraken.deb
 ```
 
-### Outils
-
-#### Drush
+#### Spotify
 ```bash
-sudo sh -c "curl -L https://s3.amazonaws.com/files.drush.org/drush.phar > /usr/local/bin/drush" \
-sudo chmod +x /usr/local/bin/drush \
-drush init -y
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410 \
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list \
+sudo apt-get update \
+sudo apt-get install spotify-client
 ```
-
-#### WP-cli
-```bash
-sudo sh -c "curl -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > /usr/local/bin/wp" \
-sudo chmod +x /usr/local/bin/wp
-```
-
-```bash
-sudo sh -c "curl -L https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash > /etc/bash_completion.d/wp-completion"
-```
-
-### Navigateur
 
 #### Google Chrome
 ```bash
@@ -84,14 +71,23 @@ sudo apt-get update \
 sudo apt-get install firefox-mozilla-build
 ```
 
-### Musique
+### Outils (facultatif, voir Docker plus bas)
 
-#### Spotify
+#### Drush
 ```bash
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410 \
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list \
-sudo apt-get update \
-sudo apt-get install spotify-client
+sudo sh -c "curl -L https://s3.amazonaws.com/files.drush.org/drush.phar > /usr/local/bin/drush" \
+sudo chmod +x /usr/local/bin/drush \
+drush init -y
+```
+
+#### WP-cli
+```bash
+sudo sh -c "curl -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > /usr/local/bin/wp" \
+sudo chmod +x /usr/local/bin/wp
+```
+
+```bash
+sudo sh -c "curl -L https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash > /etc/bash_completion.d/wp-completion"
 ```
 
 ### Docker

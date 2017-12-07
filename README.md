@@ -106,6 +106,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
 ```
 
+#### Portainer
+```bash
+docker run --name portainer -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data portainer/portainer
+```
+
 #### Composer
 ```bash
 docker pull composer
@@ -126,4 +131,9 @@ composer () {
         --volume $(pwd):/app \
         composer "$@"
 }
+```
+
+#### Adminer
+```bash
+docker run --name adminer -d -p 4400:80 -v /var/lib/mysql:/var/lib/mysql --v /var/run/mysqld:/var/run/mysqld clue/adminer
 ```

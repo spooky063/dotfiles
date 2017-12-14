@@ -65,7 +65,7 @@ else
   alias dropswap='echo "You must be a root user" 2>&1'
 fi
 
-alias clearlog='find /var/log/ \( -iregex ".*\.[0-9]+" -o -iname "*.gz" \) -exec rm {} \;'
+alias clearlog='sudo find /var/log/ \( -iregex ".*\.[0-9]+" -o -iname "*.gz" \) -exec rm {} \;'
 
 # SVN
 if [ -x /usr/bin/svn ]; then

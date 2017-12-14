@@ -38,11 +38,6 @@ __vcs_name() {
     fi
 }
 
-export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_HIDE_IF_PWD_IGNORED=1
-export GIT_MERGE_AUTOEDIT=no
-
 # Custom Extract / Compress
 extract () {
   if [ -f $1 ] ; then

@@ -1,5 +1,5 @@
-if [ "`id -u`" -eq 0 ]; then
-  PATH="$HOME/.config/composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+if [[ $EUID -eq 0 ]]; then
+  PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 else
   PATH="$HOME/.config/composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 fi

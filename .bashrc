@@ -1,39 +1,32 @@
+# Include
 [ -r /etc/bashrc ] && source /etc/bashrc
 [ -r /etc/bash_completion ] && source /etc/bash_completion
+[ -r $HOME/.bash.aliases ] && source $HOME/.bash.aliases
+[ -r $HOME/.bash.functions ] && source $HOME/.bash.functions
 
-# Alias
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# Color Palette
+RESET='\033[0m'
+BOLD='\033[1m'
 
-# GIT or SVN
-__has_parent_dir () {
-    test -d "$1" && return 0;
+## Foreground
+BLACK='\033[38;5;0m'
+RED='\033[38;5;1m'
+GREEN='\033[38;5;2m'
+YELLOW='\033[38;5;3m'
+BLUE='\033[38;5;4m'
+MAGENTA='\033[38;5;5m'
+CYAN='\033[38;5;6m'
+WHITE='\033[38;5;7m'
 
-    current="."
-    while [ ! "$current" -ef "$current/.." ]; do
-        if [ -d "$current/$1" ]; then
-            return 0;
-        fi
-        current="$current/..";
-    done
+## Background
+ON_BLACK='\033[48;5;0m'
+ON_RED='\033[48;5;1m'
+ON_GREEN='\033[48;5;2m'
+ON_YELLOW='\033[48;5;3m'
+ON_BLUE='\033[48;5;4m'
+ON_MAGENTA='\033[48;5;5m'
+ON_CYAN='\033[48;5;6m'
+ON_WHITE='\033[48;5;7m'
 
-    return 1;
-}
-
-__vcs_name() {
-    if [ -d .svn ]; then
-        echo " (svn)";
-    elif __has_parent_dir ".svn"; then
-        echo " (svn)";
-    elif __has_parent_dir ".git"; then
-        echo "$(__git_ps1 ' (%s)')";
-    fi
-}
-
-# Prompt
-export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_HIDE_IF_PWD_IGNORED=1
-export PS1='\[\e[0;91m\][\A] \[\e[38;5;226m\]\u\[\e[38;5;166m\]@\[\e[38;5;99m\]\h\[\e[01;33m\]$(__vcs_name) \[\e[00;36m\]\w \[\e[0m\]\n$ '
-export GIT_MERGE_AUTOEDIT=no
+# PS1
+export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED$(__vcs_name) $CYAN\w $RESET\n$ "

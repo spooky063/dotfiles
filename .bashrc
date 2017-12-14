@@ -29,4 +29,4 @@ ON_CYAN='\033[48;5;6m'
 ON_WHITE='\033[48;5;7m'
 
 # PS1
-export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED$(__vcs_name) $CYAN\w $RESET\n$ "
+export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED\$(__vcs_name) $CYAN\w $RESET\n$ "

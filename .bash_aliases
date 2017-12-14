@@ -21,7 +21,7 @@ alias dir='ls -la'
 # Listing:
 #------------------------------------------////
 alias ls='ls -F --color=always'
-alias ll='ls -lh'
+alias ll='ls -lSrh'
 alias lt='ls -alt'
 alias la='ls -A'
 alias lla='ls -Alh'

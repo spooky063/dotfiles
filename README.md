@@ -135,5 +135,11 @@ composer () {
 
 #### Adminer
 ```bash
-docker run --name adminer -d -p 4400:80 -v /var/lib/mysql:/var/lib/mysql --v /var/run/mysqld:/var/run/mysqld clue/adminer
+docker run \
+    --name local_adminer \
+    -d \
+    -p 8080:80 \
+    -v /var/lib/mysql:/var/lib/mysql \
+    -v /var/run/mysqld:/var/run/mysqld \
+    clue/adminer
 ```

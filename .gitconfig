@@ -24,7 +24,7 @@
 	# editor = subl -w
 	# 
 	# Or Atom, perhaps:
-	# editor = atom --wait
+	editor = atom --wait
 	# 
 	# Sublime Text 2 on Windows:
 	# editor = 'c:/Program Files (x86)/Sublime Text 2/sublime_text.exe' -w
@@ -34,6 +34,9 @@
 	#
 	# Don't consider trailing space change as a cause for merge conflicts
 	whitespace = -trailing-space
+	eol = lf
+	autocrlf = true
+	safecrlf = false
 [diff]
 	# Use better, descriptive initials (c, i, w) instead of a/b.
 	mnemonicPrefix = true

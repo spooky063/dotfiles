@@ -1,0 +1,55 @@
+# GIT / SVN
+__has_parent_dir () {
+    test -d "$1" && return 0;
+
+    current="."
+    while [ ! "$current" -ef "$current/.." ]; do
+        if [ -d "$current/$1" ]; then
+            return 0;
+        fi
+        current="$current/..";
+    done
+
+    return 1;
+}
+
+__vcs_name() {
+    if [ -d .svn ]; then
+        echo " (svn)";
+    elif __has_parent_dir ".svn"; then
+        echo " (svn)";
+    elif __has_parent_dir ".git"; then
+        echo "$(__git_ps1 ' (%s)')";
+    fi
+}
+
+export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_HIDE_IF_PWD_IGNORED=1
+export GIT_MERGE_AUTOEDIT=no
+
+# Custom Extract / Compress
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       rar x $1       ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7z x $1        ;;
+          *)           echo "don't know how to extract '$1'..." ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+
+mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
+mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }

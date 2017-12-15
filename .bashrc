@@ -37,3 +37,10 @@ export GIT_PS1_HIDE_IF_PWD_IGNORED=1
 type __vcs_name &>/dev/null \
   && export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED\$(__vcs_name) $CYAN\w $RESET\n$ " \
   || export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED $CYAN\w $RESET\n$ "
+
+# History
+export HISTSIZE=10000
+export HISTCONTROL=ignoreboth:erasedups
+export HISTIGNORE='&:x:ls:cd ~:cd:cd ..:..:exit:history'
+shopt -s histappend
+PROMPT_COMMAND='history -a'

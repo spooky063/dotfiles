@@ -41,6 +41,6 @@ type __vcs_name &>/dev/null \
 # History
 export HISTSIZE=10000
 export HISTCONTROL=ignoreboth:erasedups
-export HISTIGNORE='&:x:ls:cd ~:cd:cd ..:..:exit:history'
+export HISTIGNORE='&:x:s:df:du:ls*:ll*:lt*:la*:lla*:lat*:ltr*:latr*:www:cds:cd*:..:exit:history'
 shopt -s histappend
 PROMPT_COMMAND='history -a'

@@ -1,5 +1,3 @@
-#!/usr/bin/env fish
-
 function composer
 	docker run \
       --tty \

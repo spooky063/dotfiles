@@ -5,21 +5,18 @@ end
 
 function __jd_svn_prompt -d 'Prompt svn'
   if __jd_svn_is
+    set -l current_revision (command svn info --show-item revision | sed 's: ::g' ^/dev/null)
+
     __jd_svn_color
     echo '('
 
     printf '%s ' (__jd_svn_branch)
 
     echo 'r'
-    if test (command svnversion | sed 's=[^0-9:]*==g' | grep ':')
-      if [ __jd_svn_rev != 0 ]
-        echo '-'(__jd_svn_rev)
-      else
-        echo '='
-      end
-    else
-      echo '='(command svnversion | sed 's=[^0-9:]*==g' | cut -f 1 -d ':' ^/dev/null)
+    if begin; test (__jd_svn_rev) -gt 0; end
+      echo '-'(__jd_svn_rev)
     end
+    echo '='$current_revision
 
     echo ')'
     set_color normal
@@ -36,9 +33,10 @@ function __jd_svn_color -d 'Set svn color according to status'
 end
 
 function __jd_svn_rev -d 'Print svn revisions'
-  set -l x (command svnversion | sed 's=[^0-9:]*==g' | cut -f 1 -d ':' ^/dev/null)
-  set -l y (command svnversion | sed 's=[^0-9:]*==g' | cut -f 2 -d ':' ^/dev/null)
-  printf '%d' (math $y - $x)
+  set -l url_repo (command svn info | grep '^URL' | sed -r 's/^.{6}//')
+  set -l last_revision (command svn log -l 1 (echo $url_repo) | head -n 2 | cut -f 1 -d '|' | sed 's=[^0-9:]*==g' ^/dev/null)
+  set -l current_revision (command svn info --show-item revision | sed 's: ::g' ^/dev/null)
+  echo (math $last_revision - $current_revision)
 end
 
 function __jd_svn_branch -d 'Print svn branch'
@@ -120,7 +118,6 @@ function __jd_git_prompt -d "Gets the current git status"
   end
 end
 
-# Date
 function __jd_date -d "Prints current date"
   set_color $fish_color_autosuggestion ^/dev/null; or set_color 555
   printf '%s' (date "+%H:%M:%S")

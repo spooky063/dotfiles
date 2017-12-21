@@ -7,10 +7,12 @@
 	ui = auto
 [alias]
 	st = status
+	co = checkout
 	ci = commit
 	lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
 	oops = commit --amend --no-edit
 	review-local = "!git lg @{push}.."
+	rl = reflog show HEAD -30
 	# Or pre 2.5, as we didn't differential push and upstream in shorthands:
 	# review-local = lg @{upstream}..
 [core]

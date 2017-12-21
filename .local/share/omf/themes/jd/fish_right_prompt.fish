@@ -11,10 +11,14 @@ function __jd_svn_prompt -d 'Prompt svn'
     printf '%s ' (__jd_svn_branch)
 
     echo 'r'
-    if [ __jd_svn_rev != 0 ]
-      echo '-'(__jd_svn_rev)
+    if test (command svnversion | sed 's=[^0-9:]*==g' | grep ':')
+      if [ __jd_svn_rev != 0 ]
+        echo '-'(__jd_svn_rev)
+      else
+        echo '='
+      end
     else
-      echo '='
+      echo '='(command svnversion | sed 's=[^0-9:]*==g' | cut -f 1 -d ':' ^/dev/null)
     end
 
     echo ')'
@@ -116,6 +120,7 @@ function __jd_git_prompt -d "Gets the current git status"
   end
 end
 
+# Date
 function __jd_date -d "Prints current date"
   set_color $fish_color_autosuggestion ^/dev/null; or set_color 555
   printf '%s' (date "+%H:%M:%S")

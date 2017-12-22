@@ -25,7 +25,7 @@ function __jd_svn_prompt -d 'Prompt svn'
 end
 
 function __jd_svn_color -d 'Set svn color according to status'
-  if [ __jd_svn_rev != 0 ]
+  if begin; test (__jd_svn_rev) -gt 0; end
     set_color red
   else
     set_color green
@@ -48,66 +48,124 @@ function __jd_git_is -d 'Check if path is git directory'
   test -d .git; or command git rev-parse --git-dir >/dev/null ^/dev/null
 end
 
-function __jd_git_prompt -d "Gets the current git status"
+function __jd_git_branch -d 'Print git branch'
   if __jd_git_is
-    set -l branch (command git symbolic-ref --short HEAD ^/dev/null; or git show-ref --head -s --abbrev | head -n1 ^/dev/null)
-    set -l changedFiles (command git diff --name-status ^/dev/null | string match -r \\w)
-    set -l stagedFiles (command git diff --staged --name-status | string match -r \\w)
-    set -l stashed (command git stash list ^/dev/null | string match -r \\w)
-    set -l untrackedfiles (command git ls-files --others --exclude-standard | wc -l | string trim)
+    printf '%s' (command git symbolic-ref --short HEAD ^/dev/null; or git show-ref --head -s --abbrev | head -n1 ^/dev/null)
+  end
+end
 
+function __jd_git_commit -d 'Print the number of revision between upstream and HEAD'
+  if __jd_git_is
+    printf '%s' (command git rev-list --count --left-right '@{upstream}...HEAD' ^/dev/null)
+  end
+end
+
+function __jd_git_commit_pull -d 'Print the number of commit to pull'
+  if __jd_git_is
+    printf '%d' (echo (__jd_git_commit) | cut -f 1 ^/dev/null)
+  end
+end
+
+function __jd_git_commit_push -d 'Print the number of commit to push'
+  if __jd_git_is
+    printf '%d' (echo (__jd_git_commit) | cut -f 2 ^/dev/null)
+  end
+end
+
+function __jd_git_commit_count -d 'Print the number of commit to pull and push'
+  printf '%d' (math (__jd_git_commit_pull) + (__jd_git_commit_push))
+end
+
+function __jd_git_dirty -d 'Print the number of file changed'
+  if __jd_git_is
+    set -l changedFiles (command git diff --name-status ^/dev/null | string match -r \\w)
+    printf '%d' (count $changedFiles)
+  end
+end
+
+function __jd_git_dirty_count -d 'Print the total number of file changed'
+  if __jd_git_is
+    set -l changedFiles (command git diff --name-status ^/dev/null | string match -r \\w)
     set -l x (count $changedFiles)
     set -l y (count (string match -r "U" -- $changedFiles))
-    set -l dirtystate (math $x - $y)
-    set -l z (count $stagedFiles)
-    set -l s (count $stashed)
-    set -l invalidstate (count (string match -r "U" -- $stagedFiles))
-    set -l stagedstate (math $x - $invalidstate)
-    set -l totaluntrackedfiles (math $x + $z + $untrackedfiles)
+    printf '%d' (math $x - $y)
+  end
+end
 
-    if [ "$dirtystate" != "0" ]
+function __jd_git_staged -d 'Print the number of file staged'
+  if __jd_git_is
+    set -l stagedFiles (command git diff --staged --name-status | string match -r \\w)
+    printf '%d' (count $stagedFiles)
+  end
+end
+
+function __jd_git_staged_count -d 'Print the total number of file staged'
+  if __jd_git_is
+    set -l stagedFiles (command git diff --staged --name-status | string match -r \\w)
+    set -l x (count $stagedFiles)
+    set -l y (count (string match -r "U" -- $stagedFiles))
+    printf '%d' (math $x - $y)
+  end
+end
+
+function __jd_git_untracked -d 'Print the number of file untracked'
+  if __jd_git_is
+    printf '%d' (command git ls-files --others --exclude-standard | wc -l | string trim)
+  end
+end
+
+function __jd_git_untracked_count -d 'Print the total number of file untracked'
+  printf '%d' (math (__jd_git_dirty) + (__jd_git_staged) + (__jd_git_untracked))
+end
+
+function __jd_git_stashed -d 'Print the number of file stashed'
+  if __jd_git_is
+    set -l stashed (command git stash list ^/dev/null | string match -r \\w)
+    printf '%d' (count $stashed)
+  end
+end
+
+function __jd_git_prompt -d "Gets the current git status"
+  if __jd_git_is
+    if begin; test (__jd_git_dirty_count) -gt 0; end
       set_color red
-    else if [ "$totalcommits" != "0" ]
+    else if begin; test (__jd_git_commit_count) -gt 0; end
       set_color yellow
     else
       set_color green
     end
 
     echo '('
-    echo $branch
+    echo (__jd_git_branch)
     echo ' '
-    if [ "$s" != "0" ]
+    if begin; test (__jd_git_stashed) -gt 0; end
       echo '^'
     end
-    if [ "$z" != "0" ]
-      echo '+'$z
+    if begin; test (__jd_git_staged) -gt 0; end
+      echo '+'(__jd_git_staged)
     end
-    if [ "$x" != "0" ]
-      echo '*'$x
+    if begin; test (__jd_git_dirty) -gt 0; end
+      echo '*'(__jd_git_dirty)
     end
-    if [ "$untrackedfiles" != "0" ]
+    if begin; test (__jd_git_untracked) -gt 0; end
       echo '%'
     end
-    if [ "$totaluntrackedfiles" = "0" ]
+    if begin; test (__jd_git_untracked_count) -eq 0; end
       echo '$'
     end
     echo ' u'
     if test (command git rev-list --count --left-right '@{upstream}...HEAD' ^/dev/null)
-      set -l commit_count (command git rev-list --count --left-right '@{upstream}...HEAD' ^/dev/null)
-      set -l commits_to_pull (echo $commit_count | cut -f 1 ^/dev/null)
-      set -l commits_to_push (echo $commit_count | cut -f 2 ^/dev/null)
-
-    	switch "$commit_count"
+    	switch (__jd_git_commit)
       case ""
     	  # no upstream
       case "0"\t"0"
-    	  test -n "$none"; and echo "$none"; or echo "="
+    	  echo "="
       case "*"\t"0"
-    	  test -n "$behind"; and echo "$behind"; or echo "-"$commits_to_pull
+    	  echo "-"(__jd_git_commit_pull)
       case "0"\t"*"
-    	  test -n "$ahead"; and echo "$ahead"; or echo "+"$commits_to_push
+    	  echo "+"(__jd_git_commit_push)
       case "*"
-    	  test -n "$diverged"; and echo "$diverged"; or echo "±"
+    	  echo "±"
     	end
     else
       echo "±"

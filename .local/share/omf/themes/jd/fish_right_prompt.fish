@@ -1,8 +1,4 @@
 # Svn
-function __jd_svn_is -d 'Check if path is svn directory'
-  test -d .svn; or command svn info >/dev/null ^/dev/null
-end
-
 function __jd_svn_prompt -d 'Prompt svn'
   if __jd_svn_is
     set -l current_revision (command svn info --show-item revision | sed 's: ::g' ^/dev/null)
@@ -24,12 +20,20 @@ function __jd_svn_prompt -d 'Prompt svn'
   end
 end
 
+function __jd_svn_is -d 'Check if path is svn directory'
+  test -d .svn; or command svn info >/dev/null ^/dev/null
+end
+
 function __jd_svn_color -d 'Set svn color according to status'
   if begin; test (__jd_svn_rev) -gt 0; end
     set_color red
   else
     set_color green
   end
+end
+
+function __jd_svn_branch -d 'Print svn branch'
+  printf '%s' (command svnpath | egrep -o '(tags|branches)/[^/]+|trunk')
 end
 
 function __jd_svn_rev -d 'Print svn revisions'
@@ -39,11 +43,58 @@ function __jd_svn_rev -d 'Print svn revisions'
   echo (math $last_revision - $current_revision)
 end
 
-function __jd_svn_branch -d 'Print svn branch'
-  printf '%s' (command svnpath | egrep -o '(tags|branches)/[^/]+|trunk')
+# Git
+function __jd_git_prompt -d "Gets the current git status"
+  if __jd_git_is
+    if begin; test (__jd_git_dirty_count) -gt 0; or test (__jd_git_staged_count) -gt 0; end
+      set_color red
+    else if begin; test (__jd_git_commit_count) -gt 0; end
+      set_color yellow
+    else
+      set_color green
+    end
+
+    echo '('
+    echo (__jd_git_branch)
+    echo ' '
+    if begin; test (__jd_git_stashed) -gt 0; end
+      echo '^'
+    end
+    if begin; test (__jd_git_staged) -gt 0; end
+      echo '+'(__jd_git_staged)
+    end
+    if begin; test (__jd_git_dirty) -gt 0; end
+      echo '*'(__jd_git_dirty)
+    end
+    if begin; test (__jd_git_untracked) -gt 0; end
+      echo '%'
+    end
+    if begin; test (__jd_git_untracked_count) -eq 0; end
+      echo '$'
+    end
+    echo ' u'
+    if test (command git rev-list --count --left-right '@{upstream}...HEAD' ^/dev/null)
+    	switch (__jd_git_commit)
+      case ""
+    	  # no upstream
+      case "0"\t"0"
+    	  echo "="
+      case "*"\t"0"
+    	  echo "-"(__jd_git_commit_pull)
+      case "0"\t"*"
+    	  echo "+"(__jd_git_commit_push)
+      case "*"
+    	  echo "±"
+    	end
+    else
+      echo "±"
+    end
+    echo ')'
+    set_color normal
+    echo ' '
+  end
 end
 
-# Git
 function __jd_git_is -d 'Check if path is git directory'
   test -d .git; or command git rev-parse --git-dir >/dev/null ^/dev/null
 end
@@ -122,57 +173,6 @@ function __jd_git_stashed -d 'Print the number of file stashed'
   if __jd_git_is
     set -l stashed (command git stash list ^/dev/null | string match -r \\w)
     printf '%d' (count $stashed)
-  end
-end
-
-function __jd_git_prompt -d "Gets the current git status"
-  if __jd_git_is
-    if begin; test (__jd_git_dirty_count) -gt 0; end
-      set_color red
-    else if begin; test (__jd_git_commit_count) -gt 0; end
-      set_color yellow
-    else
-      set_color green
-    end
-
-    echo '('
-    echo (__jd_git_branch)
-    echo ' '
-    if begin; test (__jd_git_stashed) -gt 0; end
-      echo '^'
-    end
-    if begin; test (__jd_git_staged) -gt 0; end
-      echo '+'(__jd_git_staged)
-    end
-    if begin; test (__jd_git_dirty) -gt 0; end
-      echo '*'(__jd_git_dirty)
-    end
-    if begin; test (__jd_git_untracked) -gt 0; end
-      echo '%'
-    end
-    if begin; test (__jd_git_untracked_count) -eq 0; end
-      echo '$'
-    end
-    echo ' u'
-    if test (command git rev-list --count --left-right '@{upstream}...HEAD' ^/dev/null)
-    	switch (__jd_git_commit)
-      case ""
-    	  # no upstream
-      case "0"\t"0"
-    	  echo "="
-      case "*"\t"0"
-    	  echo "-"(__jd_git_commit_pull)
-      case "0"\t"*"
-    	  echo "+"(__jd_git_commit_push)
-      case "*"
-    	  echo "±"
-    	end
-    else
-      echo "±"
-    end
-    echo ')'
-    set_color normal
-    echo ' '
   end
 end
 

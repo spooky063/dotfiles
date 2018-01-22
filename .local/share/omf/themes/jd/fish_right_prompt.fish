@@ -1,22 +1,24 @@
 # Svn
 function __jd_svn_prompt -d 'Prompt svn'
   if __jd_svn_is
-    set -l current_revision (command svn info --show-item revision | sed 's: ::g' ^/dev/null)
+    if begin; not command svn info | grep 'too old' >/dev/null ^/dev/null; end
+      set -l current_revision (command svn info --show-item revision | sed 's: ::g' ^/dev/null)
 
-    __jd_svn_color
-    echo '('
+      __jd_svn_color
+      echo '('
 
-    printf '%s ' (__jd_svn_branch)
+      printf '%s ' (__jd_svn_branch)
 
-    echo 'r'
-    if begin; test (__jd_svn_rev) -gt 0; end
-      echo '-'(__jd_svn_rev)
+      echo 'r'
+      if begin; test (__jd_svn_rev) -gt 0; end
+        echo '-'(__jd_svn_rev)
+      end
+      echo '='$current_revision
+
+      echo ')'
+      set_color normal
+      echo ' '
     end
-    echo '='$current_revision
-
-    echo ')'
-    set_color normal
-    echo ' '
   end
 end
 

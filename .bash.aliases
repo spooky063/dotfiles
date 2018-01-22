@@ -31,8 +31,8 @@ alias ltr='ls -altr'
 alias latr='ls -altr'
 
 # System
-alias shutdown='sudo shutdown –h now'
-alias restart='sudo shutdown –r now'
+alias shutdown='sudo systemctl poweroff -i'
+alias restart='sudo systemctl reboot -i'
 alias suspend='sudo pm-suspend'
 alias lock='gnome-screensaver-command --lock'
 

@@ -140,31 +140,6 @@ sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_V
 docker run --name portainer -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data portainer/portainer
 ```
 
-#### Composer
-```bash
-docker pull composer
-```
-
-```bash
-# ~/.bashrc or ~/.zshrc
-composer () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --net=host \
-        --user $(id -u):$(id -g) \
-        --volume /etc/passwd:/etc/passwd:ro \
-        --volume /etc/group:/etc/group:ro \
-        --volume $(pwd):/app \
-        --volume /home/$(id -un):/home/$(id -un) \
-        -e COMPOSER_HOME="/home/$(id -un)/.composer" \
-        composer "$@"
-}
-```
-
 #### Adminer
 ```bash
 docker run \

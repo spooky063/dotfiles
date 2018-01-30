@@ -93,6 +93,11 @@ sudo apt-get install firefox-mozilla-build
 
 ### Outils
 
+#### Composer
+```bash
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer;
+```
+
 #### Drush
 ```bash
 sudo sh -c "curl -L https://s3.amazonaws.com/files.drush.org/drush.phar > /usr/local/bin/drush" \

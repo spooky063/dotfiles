@@ -159,8 +159,8 @@ composer () {
         --volume /etc/passwd:/etc/passwd:ro \
         --volume /etc/group:/etc/group:ro \
         --volume $(pwd):/app \
-        --volume /home/(id -un):/home/(id -un) \
-        -e COMPOSER_HOME="/home/(id -un)/.composer" \
+        --volume /home/$(id -un):/home/$(id -un) \
+        -e COMPOSER_HOME="/home/$(id -un)/.composer" \
         composer "$@"
 }
 ```

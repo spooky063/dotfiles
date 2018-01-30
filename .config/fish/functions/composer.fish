@@ -1,15 +1,16 @@
 function composer
-  set tty --tty
-  docker run \
-    $tty \
-    --interactive \
+	set tty --tty
+	set home (id -un)
+	docker run \
+		$tty \
+		--interactive \
     --rm \
-    --net=host \
+		--net=host \
     --user (id -u):(id -g) \
     --volume /etc/passwd:/etc/passwd:ro \
     --volume /etc/group:/etc/group:ro \
     --volume (pwd):/app \
-    --volume /home/(id -un):/home/(id -un) \
-    -e COMPOSER_HOME="/home/(id -un)/.composer" \
+		--volume /home/$home:/home/$home \
+		-e COMPOSER_HOME="/home/$home/.composer" \
     composer $argv
 end

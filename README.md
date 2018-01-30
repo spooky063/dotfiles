@@ -109,6 +109,15 @@ sudo chmod +x /usr/local/bin/wp
 ```bash
 sudo sh -c "curl -L https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash > /etc/bash_completion.d/wp-completion"
 ```
+#### Phpcs avec le standard Drupal
+```bash
+# Facultatif
+composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative  --no-interaction
+
+# Processus
+composer global require drupal/coder:^8.2.12
+composer global require dealerdirect/phpcodesniffer-composer-installer
+```
 
 ### Docker
 
@@ -145,10 +154,13 @@ composer () {
         $tty \
         --interactive \
         --rm \
+        --net=host \
         --user $(id -u):$(id -g) \
         --volume /etc/passwd:/etc/passwd:ro \
         --volume /etc/group:/etc/group:ro \
         --volume $(pwd):/app \
+        --volume /home/(id -un):/home/(id -un) \
+        -e COMPOSER_HOME="/home/(id -un)/.composer" \
         composer "$@"
 }
 ```

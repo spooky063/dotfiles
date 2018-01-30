@@ -1,21 +1,3 @@
-# Composer
-composer () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --net=host \
-        --user $(id -u):$(id -g) \
-        --volume /etc/passwd:/etc/passwd:ro \
-        --volume /etc/group:/etc/group:ro \
-        --volume $(pwd):/app \
-        --volume /home/$(id -un):/home/$(id -un) \
-        -e COMPOSER_HOME="/home/$(id -un)/.composer" \
-        composer "$@"
-}
-
 # GIT / SVN
 __has_parent_dir () {
     test -d "$1" && return 0;

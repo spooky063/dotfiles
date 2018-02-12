@@ -71,7 +71,7 @@ alias clearlog='sudo find /var/log/ \( -iregex ".*\.[0-9]+" -o -iname "*.gz" \) 
 if which svn >/dev/null; then
   if [ -f ~/.dotfiles/svn-color/svn-color.py ]; then
     alias svn=~/.dotfiles/svn-color/svn-color.py
-  end
+  fi
   
   alias svnupdry='svn merge --dry-run -r BASE:HEAD .'
   alias svn-remove='rm -rf `find . -type d -name .svn`'

@@ -128,16 +128,23 @@ composer global require dealerdirect/phpcodesniffer-composer-installer
 
 #### Docker
 ```bash
-DOCKER_VERSION=`svn ls https://github.com/rancher/install-docker.git/branches/master | grep -Po "(\d+\.)+" | tail -n 1`
-wget -qO- https://releases.rancher.com/install-docker/${DOCKER_VERSION}.sh | sh
+DOCKER_VERSION=`svn ls https://github.com/rancher/install-docker.git/branches/master | grep -E "^(0|[1-9][0-9]*)" | tail -1`
+wget -qO- https://releases.rancher.com/install-docker/${DOCKER_VERSION} | sh
 ```
 
 #### Docker-compose
 ```bash
-COMPOSE_VERSION=`git ls-remote --tags https://github.com/docker/compose | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n 1`
+COMPOSE_VERSION=`git ls-remote --tags https://github.com/docker/compose | tail -1 | grep -oP "(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)"`
 sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
 sudo chmod +x /usr/local/bin/docker-compose
 sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
+```
+
+#### Ctop
+```bash
+RELEASE_VERSION=`git ls-remote --tags https://github.com/bcicen/ctop | tail -1 | grep -oP "(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)"`
+sudo wget https://github.com/bcicen/ctop/releases/download/v${RELEASE_VERSION}/ctop-${RELEASE_VERSION}-linux-amd64 -O /usr/local/bin/ctop
+sudo chmod +x /usr/local/bin/ctop
 ```
 
 #### Portainer

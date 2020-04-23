@@ -1,7 +1,7 @@
 # Put this in your ~/.gitconfig or ~/.config/git/config
 [user]
-	# name = Spooky063
-	# email = 
+	name = Guillaume Astier
+	email = astier.gui@gmail.com
 [color]
 	# Enable colors in color-supporting terminals
 	ui = auto

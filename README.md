@@ -38,7 +38,9 @@ make docker-tools
 # Ajout de Oh my Fish!
 rm -rf ~/.local/share/omf/
 
-make omf OR curl -L https://get.oh-my.fish | fish
+make omf 
+# OR
+curl -L https://get.oh-my.fish | fish
 
 omf theme default
 omf install godfather

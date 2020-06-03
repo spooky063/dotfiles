@@ -24,7 +24,7 @@ docker:
 	sudo apt install docker-ce docker-ce-cli containerd.io
 	sudo usermod -aG docker ${USER}
 
-docker-tools: compose ctop omf
+docker-tools: compose ctop
 
 compose:
 	/bin/bash ./scripts/compose.sh

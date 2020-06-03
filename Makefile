@@ -1,4 +1,4 @@
-.PHONY: purge pat snap snap-stable snap-classic docker docker-tools compose ctop omf config
+.PHONY: purge pat snap snap-stable snap-classic docker docker-tools compose ctop omf config vundle
 
 purge:
 	cat packages/purge.list | xargs -n 1 sudo apt-get purge
@@ -38,3 +38,7 @@ omf:
 
 config:
 	/bin/bash ./config/config.sh
+
+vundle:
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	vim +PluginInstall +qall

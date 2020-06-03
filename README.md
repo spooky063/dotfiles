@@ -48,3 +48,8 @@ omf install godfather
 # Ajout des fichiers de configuration du système
 make config
 ```
+
+```bash
+# Configuration de vim
+make vundle
+```

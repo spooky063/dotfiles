@@ -2,6 +2,8 @@ set nocompatible  " be iMproved, required
 filetype off  " required
 set exrc
 
+set shell=/bin/bash
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -15,7 +17,7 @@ Plugin 'vim-scripts/L9'
 Plugin 'scrooloose/nerdtree'
 
 " ==== Completion
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " ==== Git
 Plugin 'airblade/vim-gitgutter'

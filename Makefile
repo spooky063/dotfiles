@@ -1,11 +1,11 @@
-.PHONY: purge pat snap snap-stable snap-classic docker docker-tools compose ctop omf config vundle
+.PHONY: purge pat snap snap-stable snap-classic docker docker-tools compose ctop omf omf-install config vundle
 
 purge:
 	cat packages/purge.list | xargs -n 1 sudo apt-get purge
 
 apt:
-	sudo apt update
-	cat packages/apt.list | xargs -n 1 sudo apt install
+	sudo apt update -y
+	cat packages/apt.list | xargs -n 1 sudo apt install -y
 	sudo apt autoclean
 	sudo apt autoremove
 
@@ -36,9 +36,16 @@ ctop:
 omf:
 	echo "For omf installation, launch the following command: \033[0;33mcurl -L https://get.oh-my.fish | fish\e[0m"
 
+omf-install:
+	/bin/bash ./config/omf.sh
+
 config:
 	/bin/bash ./config/config.sh
 
 vundle:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
+
+wallpaper:
+	/bin/bash ./scripts/wallpaper.sh
+	sudo ln -s ./scripts/wallpaper.sh /etc/rc.local

@@ -44,3 +44,7 @@ export HISTCONTROL=ignoreboth:erasedups
 export HISTIGNORE='&:x:s:df:du:ls*:ll*:lt*:la*:lla*:lat*:ltr*:latr*:www:cds:cd*:..:exit:history'
 shopt -s histappend
 PROMPT_COMMAND='history -a'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

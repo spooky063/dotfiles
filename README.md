@@ -38,10 +38,9 @@ make docker-tools
 # Ajout de Oh my Fish!
 rm -rf ~/.local/share/omf/
 
-make omf 
+make omf
 # OR
 curl -L https://get.oh-my.fish | fish
-
 omf theme default
 omf install godfather
 ```
@@ -54,4 +53,34 @@ make config
 ```bash
 # Configuration de vim
 make vundle
+```
+
+```bash
+# Ajout d'un wallpaper custom à chaque démarrage
+make wallpaper
+```
+
+## Outils de développement supplémentaire (optional)
+
+```bash
+# Installation de nodejs && npm && npx
+cd ~
+curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt-get install -y nodejs gcc g++ make
+rm -rf nodesource_setup.sh
+```
+
+```bash
+# Installation de yarn
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn -y
+```
+
+```bash
+# Hide warning message for React/Angular hot-reloads files
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
 ```

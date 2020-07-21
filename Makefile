@@ -1,3 +1,5 @@
+current_dir = $(shell pwd)
+
 .PHONY: purge pat snap snap-stable snap-classic docker docker-tools compose ctop omf omf-install config vundle
 
 purge:
@@ -48,4 +50,4 @@ vundle:
 
 wallpaper:
 	/bin/bash ./scripts/wallpaper.sh
-	sudo ln -s ./scripts/wallpaper.sh /etc/rc.local
+	sudo ln -s ${current_dir}/scripts/wallpaper.sh /etc/rc.local

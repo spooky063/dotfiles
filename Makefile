@@ -11,6 +11,12 @@ apt:
 	sudo apt autoclean
 	sudo apt autoremove
 
+apt-update:
+	sudo apt update -y
+	sudo apt upgrade
+	sudo apt autoclean
+	sudo apt autoremove
+
 snap: snap-stable snap-classic
 
 snap-stable:
@@ -18,6 +24,11 @@ snap-stable:
 
 snap-classic:
 	cat packages/snap-classic.list | xargs -n 1 sudo snap install --classic
+
+snap-update:
+	sudo snap refresh
+
+update: apt-update snap-update 
 
 docker:
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -

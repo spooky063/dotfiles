@@ -14,8 +14,8 @@ apt:
 apt-update:
 	sudo apt update -y
 	sudo apt upgrade
-	sudo apt autoclean
-	sudo apt autoremove
+	sudo apt autoclean -y
+	sudo apt autoremove -y
 
 snap: snap-stable snap-classic
 

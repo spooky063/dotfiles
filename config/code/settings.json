@@ -1,0 +1,105 @@
+{
+    "breadcrumbs.enabled": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.folding": true,
+    "editor.foldingStrategy": "auto",
+    "editor.fontFamily": "Cascadia Code, monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.formatOnSave": true,
+    "editor.lineHeight": 18,
+    "editor.minimap.enabled": false,
+    "editor.mouseWheelScrollSensitivity": 3,
+    "editor.parameterHints.enabled": false,
+    "editor.quickSuggestions": {
+        "comments": true
+    },
+    "editor.renderLineHighlight": "gutter",
+    "editor.renderWhitespace": "none",
+    "editor.showFoldingControls": "mouseover",
+    "editor.suggestFontSize": 10,
+    "editor.suggestLineHeight": 15,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx"
+    },
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "extension-manager.extensions": [
+        "mgmcdermott.vscode-language-babel",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        "mikestead.dotenv",
+        "kasik96.latte",
+        "marabesi.php-import-checker",
+        "phproberto.vscode-php-getters-setters",
+        "bmewburn.vscode-intelephense-client",
+        "felixfbecker.php-intellisense",
+        "mehedidracula.php-namespace-resolver",
+        "imperez.smarty",
+        "aswinkumar863.smarty-template-support",
+        "whatwedo.twig",
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "ecodes.vscode-phpmd",
+        "yzhang.markdown-all-in-one",
+        "richie5um2.vscode-sort-json"
+    ],
+    "extensions.ignoreRecommendations": true,
+    "files.associations": {
+        ".module": "php",
+        ".prettierrc": "json",
+        ".stylelintrc": "json"
+    },
+    "files.autoSave": "afterDelay",
+    "files.eol": "\n",
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/.build": true,
+        "**/.err": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.log": true,
+        "**/.rec": true,
+        "**/.svn": true,
+        "**/CVS": true,
+        "node_modules": true
+    },
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/node_modules/*/**": true
+    },
+    "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "php.executablePath": "/usr/bin/php.default",
+    "php.suggest.basic": false,
+    "php.validate.enable": true,
+    "php.validate.run": "onType",
+    "php.validate.executablePath": "/usr/bin/php.default",
+    "search.exclude": {
+        "**/bower_components": true,
+        "**/node_modules": true,
+        "*.min.js": true,
+        ".build/**": true,
+        "out*/**": true
+    },
+    "sortJSON.contextMenu": {
+        "sortJSON": true
+    },
+    "terminal.integrated.fontSize": 14,
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "window.zoomLevel": 1,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#303030",
+        "statusBar.debuggingBackground": "#511f1f",
+        "statusBar.noFolderBackground": "#222225"
+    },
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.labelFormat": "short",
+    "workbench.preferredLightColorTheme": "Default Dark+",
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "newUntitledFile"
+}

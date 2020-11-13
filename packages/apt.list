@@ -2,6 +2,9 @@ net-tools
 wget
 rsync
 software-properties-common
+ffmpeg
+gnome-tweaks
+jq
 curl
 apt-transport-https
 ca-certificates

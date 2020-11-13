@@ -1,4 +1,13 @@
 {
+    "[Makefile]": {
+        "editor.detectIndentation": true,
+        "editor.insertSpaces": false,
+        "editor.tabSize": 2
+    },
+    "[markdown]": {
+        "editor.renderWhitespace": "all",
+        "editor.wordWrap": "on"
+    },
     "breadcrumbs.enabled": true,
     "editor.acceptSuggestionOnEnter": "on",
     "editor.folding": true,
@@ -7,6 +16,7 @@
     "editor.fontLigatures": true,
     "editor.fontSize": 12,
     "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
     "editor.lineHeight": 18,
     "editor.minimap.enabled": false,
     "editor.mouseWheelScrollSensitivity": 3,
@@ -19,6 +29,7 @@
     "editor.showFoldingControls": "mouseover",
     "editor.suggestFontSize": 10,
     "editor.suggestLineHeight": 15,
+    "editor.tabSize": 4,
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
     },
@@ -45,13 +56,21 @@
         "ms-vscode.vscode-typescript-tslint-plugin",
         "ecodes.vscode-phpmd",
         "yzhang.markdown-all-in-one",
-        "richie5um2.vscode-sort-json"
+        "richie5um2.vscode-sort-json",
+        "pkief.material-icon-theme",
+        "editorconfig.editorconfig",
+        "ikappas.phpcs",
+        "esbenp.prettier-vscode",
+        "mrmlnc.vscode-apache",
+        "william-voyek.vscode-nginx",
+        "alexkrechik.cucumberautocomplete"
     ],
     "extensions.ignoreRecommendations": true,
     "files.associations": {
         ".module": "php",
         ".prettierrc": "json",
-        ".stylelintrc": "json"
+        ".stylelintrc": "json",
+        ".xml.dist": "xml"
     },
     "files.autoSave": "afterDelay",
     "files.eol": "\n",
@@ -74,11 +93,12 @@
     },
     "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
+    "json.maxItemsComputed": 10000,
     "php.executablePath": "/usr/bin/php.default",
     "php.suggest.basic": false,
     "php.validate.enable": true,
-    "php.validate.run": "onType",
     "php.validate.executablePath": "/usr/bin/php.default",
+    "php.validate.run": "onType",
     "search.exclude": {
         "**/bower_components": true,
         "**/node_modules": true,
@@ -90,6 +110,7 @@
         "sortJSON": true
     },
     "terminal.integrated.fontSize": 14,
+    "timeline.excludeSources": [],
     "typescript.updateImportsOnFileMove.enabled": "never",
     "window.zoomLevel": 1,
     "workbench.colorCustomizations": {
@@ -99,6 +120,7 @@
     },
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.labelFormat": "short",
+    "workbench.iconTheme": "material-icon-theme",
     "workbench.preferredLightColorTheme": "Default Dark+",
     "workbench.sideBar.location": "right",
     "workbench.startupEditor": "newUntitledFile"

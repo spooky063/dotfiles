@@ -63,7 +63,9 @@
         "esbenp.prettier-vscode",
         "mrmlnc.vscode-apache",
         "william-voyek.vscode-nginx",
-        "alexkrechik.cucumberautocomplete"
+        "alexkrechik.cucumberautocomplete",
+        "ecmel.vscode-html-css",
+        "Zignd.html-css-class-completion",
     ],
     "extensions.ignoreRecommendations": true,
     "files.associations": {

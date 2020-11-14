@@ -66,6 +66,7 @@
         "alexkrechik.cucumberautocomplete",
         "ecmel.vscode-html-css",
         "Zignd.html-css-class-completion",
+        "ms-vsliveshare.vsliveshare"
     ],
     "extensions.ignoreRecommendations": true,
     "files.associations": {
@@ -125,5 +126,8 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.preferredLightColorTheme": "Default Dark+",
     "workbench.sideBar.location": "right",
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "phpcs.executablePath": "vendor/bin/phpcs",
+    "phpcs.standard": "PSR12",
+    "phpcs.enable": false
 }

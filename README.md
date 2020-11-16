@@ -1,6 +1,6 @@
 # Dotfile
 
-Dépôt pour gérer les différents paquets a installer.  
+Dépôt pour gérer les différents paquets a installer.
 Utiliser les commandes make pour une gestion plus propre
 
 ```bash
@@ -12,18 +12,27 @@ cd .dotfile
 ## Utilisation des commandes
 
 ```bash
-# Purger les paquets inutiles de l'installation de base
-make purge
+# Purge les paquets inutiles de l'installation de base
+make apt.purge
 ```
 
 ```bash
-# Ajout des paquets au travers du manager apt
+# Mise à jour du système et installation des packets lors du premier lancement
+make apt.update
+
+# Met à jour les paquets
+make apt.upgrade
+
+# Installe les paquets au travers du manager apt
 make apt
 ```
 
 ```bash
-# Ajout des paquets au travers du manager snap
+# Installe des paquets au travers du manager snap
 make snap
+
+# Met à jour les paquets
+make snap.update
 ```
 
 ```bash
@@ -32,6 +41,14 @@ make docker
 
 # Ajout des outils docker
 make docker-tools
+```
+
+```bash
+# Installe le fichier de configuration pour vscode
+make code-settings
+
+# Installe les extensions
+make code-extension
 ```
 
 ```bash
@@ -47,7 +64,7 @@ omf install godfather
 
 ```bash
 # Ajout des fichiers de configuration du système
-make config
+make shell.config
 ```
 
 ```bash
@@ -64,11 +81,10 @@ make wallpaper
 
 ```bash
 # Installation de nodejs && npm && npx
+# Source : https://github.com/nodesource/distributions#installation-instructions
 cd ~
-curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-sudo bash nodesource_setup.sh
-sudo apt-get install -y nodejs gcc g++ make
-rm -rf nodesource_setup.sh
+curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo apt install -y nodejs gcc g++ make build-essential
 ```
 
 ```bash
@@ -76,7 +92,7 @@ rm -rf nodesource_setup.sh
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update
-sudo apt install yarn -y
+sudo apt install -y yarn
 ```
 
 ```bash

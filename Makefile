@@ -19,7 +19,7 @@ apt.upgrade:
 	sudo apt autoclean -y
 	sudo apt autoremove -y
 
-apt.purge: 
+apt.purge:
 	cat packages/purge.list | xargs -n 1 sudo apt-get purge
 
 snap: snap-stable snap-classic
@@ -33,10 +33,10 @@ snap-classic:
 snap.update:
 	sudo snap refresh
 
-package.update: apt-update snap-update 
+package.update: apt.update snap.update
 
 ## SOFTWARE
- 
+
 docker:
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(shell lsb_release -cs) stable"
@@ -58,11 +58,11 @@ code-settings:
 
 code-extension:
 	jq '."extension-manager.extensions"[]' ${current_dir}/config/code/settings.json | xargs -L 1 code --install-extension
-	
+
 code-extension.uninstall:
 	code --list-extensions | xargs -L 1 code --uninstall-extension
 
-## SHELL 
+## SHELL
 
 .SILENT: omf
 omf:

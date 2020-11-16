@@ -66,7 +66,9 @@
         "alexkrechik.cucumberautocomplete",
         "ecmel.vscode-html-css",
         "Zignd.html-css-class-completion",
-        "ms-vsliveshare.vsliveshare"
+        "ms-vsliveshare.vsliveshare",
+        "octref.vetur",
+        "bungcip.better-toml"
     ],
     "extensions.ignoreRecommendations": true,
     "files.associations": {
@@ -129,5 +131,8 @@
     "workbench.startupEditor": "newUntitledFile",
     "phpcs.executablePath": "vendor/bin/phpcs",
     "phpcs.standard": "PSR12",
-    "phpcs.enable": false
+    "phpcs.enable": false,
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

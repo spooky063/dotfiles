@@ -11,6 +11,7 @@ ca-certificates
 gnupg-agent
 vim
 git-core
+pandoc
 fish
 filezilla
 composer

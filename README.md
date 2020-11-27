@@ -9,6 +9,13 @@ git clone https://github.com/Spooky063/dotfiles.git .dotfile
 cd .dotfile
 ```
 
+## Prérequis
+
+```bash
+# Ajout des dépots
+sudo add-apt-repository -y ppa:git-core/ppa
+```
+
 ## Utilisation des commandes
 
 ```bash

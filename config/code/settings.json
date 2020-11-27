@@ -68,7 +68,8 @@
         "Zignd.html-css-class-completion",
         "ms-vsliveshare.vsliveshare",
         "octref.vetur",
-        "bungcip.better-toml"
+        "bungcip.better-toml",
+        "recca0120.vscode-phpunit"
     ],
     "extensions.ignoreRecommendations": true,
     "files.associations": {
@@ -134,5 +135,6 @@
     "phpcs.enable": false,
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "phpunit.phpunit": "vendor/bin/phpunit",
 }

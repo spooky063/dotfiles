@@ -80,6 +80,11 @@ make wallpaper
 ## Outils de développement supplémentaire (optional)
 
 ```bash
+# Installation de composer
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+```
+
+```bash
 # Installation de nodejs && npm && npx
 # Source : https://github.com/nodesource/distributions#installation-instructions
 cd ~

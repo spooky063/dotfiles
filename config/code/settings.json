@@ -14,7 +14,7 @@
     "editor.foldingStrategy": "auto",
     "editor.fontFamily": "Cascadia Code, monospace",
     "editor.fontLigatures": true,
-    "editor.fontSize": 12,
+    "editor.fontSize": 11.5,
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.lineHeight": 18,
@@ -26,12 +26,17 @@
     },
     "editor.renderLineHighlight": "gutter",
     "editor.renderWhitespace": "none",
+    "editor.rulers": [{
+        "column": 120,
+        "color": "#535353"
+    }],
     "editor.showFoldingControls": "mouseover",
     "editor.suggestFontSize": 10,
     "editor.suggestLineHeight": 15,
     "editor.tabSize": 4,
     "emmet.includeLanguages": {
-        "javascript": "javascriptreact"
+        "javascript": "javascriptreact",
+        "twig": "html"
     },
     "emmet.syntaxProfiles": {
         "javascript": "jsx"
@@ -69,14 +74,18 @@
         "ms-vsliveshare.vsliveshare",
         "octref.vetur",
         "bungcip.better-toml",
-        "recca0120.vscode-phpunit"
+        "recca0120.vscode-phpunit",
+        "nicholashsiang.vscode-vue2-snippets",
+        "mrorz.language-gettext"
     ],
     "extensions.ignoreRecommendations": true,
     "files.associations": {
-        ".module": "php",
-        ".prettierrc": "json",
-        ".stylelintrc": "json",
-        ".xml.dist": "xml"
+        "*.theme": "php",
+        "*.module": "php",
+        "*.prettierrc": "json",
+        "*.stylelintrc": "json",
+        "*.xml.dist": "xml",
+        "*.html": "twig"
     },
     "files.autoSave": "afterDelay",
     "files.eol": "\n",
@@ -101,7 +110,6 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "json.maxItemsComputed": 10000,
     "php.executablePath": "/usr/bin/php.default",
-    "php.suggest.basic": false,
     "php.validate.enable": true,
     "php.validate.executablePath": "/usr/bin/php.default",
     "php.validate.run": "onType",
@@ -115,14 +123,14 @@
     "sortJSON.contextMenu": {
         "sortJSON": true
     },
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontSize": 12,
     "timeline.excludeSources": [],
     "typescript.updateImportsOnFileMove.enabled": "never",
-    "window.zoomLevel": 1,
     "workbench.colorCustomizations": {
         "statusBar.background": "#303030",
         "statusBar.debuggingBackground": "#511f1f",
-        "statusBar.noFolderBackground": "#222225"
+        "statusBar.noFolderBackground": "#222225",
+        "editorRuler.foreground": "#511f1f"
     },
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.labelFormat": "short",
@@ -132,9 +140,23 @@
     "workbench.startupEditor": "newUntitledFile",
     "phpcs.executablePath": "vendor/bin/phpcs",
     "phpcs.standard": "PSR12",
-    "phpcs.enable": false,
-    "[vue]": {
+    "phpunit.phpunit": "vendor/bin/phpunit",
+    "workbench.editor.enablePreview": false,
+    "git.inputValidationLength": 120,
+    "[git-commit]": {
+        "editor.rulers": [
+            72
+        ],
+        "workbench.editor.restoreViewState": false
+    },
+    "prettier.arrowParens": "avoid",
+    "prettier.printWidth": 120,
+    "prettier.vueIndentScriptAndStyle": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "intelephense.environment.phpVersion": "7.3",
+    "window.zoomLevel": 1,
+    "[twig]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "phpunit.phpunit": "vendor/bin/phpunit",
+    "security.workspace.trust.untrustedFiles": "open"
 }

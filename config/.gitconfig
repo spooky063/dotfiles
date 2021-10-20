@@ -1,3 +1,4 @@
+# https://gist.githubusercontent.com/tdd/470582/raw/7f20c0e41426270ffecbccb188ebdca5e4ff2e66/gitconfig.ini
 # Put this in your ~/.gitconfig or ~/.config/git/config
 [user]
 	name = Guillaume Astier
@@ -6,6 +7,9 @@
 	# Enable colors in color-supporting terminals
 	ui = auto
 [alias]
+	# List available aliases
+  	aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+	# Command shortcuts
 	st = status
 	co = checkout
 	ci = commit
@@ -13,6 +17,11 @@
 	oops = commit --amend --no-edit
 	review-local = "!git lg @{push}.."
 	rl = reflog show HEAD -30
+	push-with-lease = push --force-with-lease
+	rebase-with-hooks = rebase -x 'git reset --soft HEAD~1 && git commit -C HEAD@{1}'
+	reword = commit --amend
+	uncommit = reset --soft HEAD~1
+	untrack = rm --cache --
 	# Or pre 2.5, as we didn't differential push and upstream in shorthands:
 	# review-local = lg @{upstream}..
 [core]
@@ -36,9 +45,6 @@
 	#
 	# Don't consider trailing space change as a cause for merge conflicts
 	whitespace = -trailing-space
-	eol = lf
-	autocrlf = false
-	safecrlf = false
 [diff]
 	# Use better, descriptive initials (c, i, w) instead of a/b.
 	mnemonicPrefix = true
@@ -48,10 +54,17 @@
 	wordRegex = .
 	# Display submodule-related information (commit listings)
 	submodule = log
+	# Use VSCode as default diff tool when running `git diff-tool`
+  	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 [fetch]
 	# Auto-fetch submodule changes (sadly, won't auto-update)
 	recurseSubmodules = on-demand
 [grep]
+	break = true
+	heading = true
+	lineNumber = true
 	# Consider most regexes to be ERE
 	extendedRegexp = true
 [log]
@@ -59,9 +72,23 @@
 	abbrevCommit = true
 	# Automatically --follow when given a single path
 	follow = true
+	# Disable decorate for reflog
+  	# (because there is no dedicated `reflog` section available)
+  	decorate = false
 [merge]
 	# Display common-ancestor blocks in conflict hunks
-	conflictStyle = diff3
+	# conflictStyle = diff3
+	# Disable fast-forward merges as default merge strategy.
+	# Force explicit call of `git merge --ff …`.
+	ff = false
+	# Custom/dedicated merge drive for npm lock files (`package-lock.json`).
+	# Also works with Yarn.
+	# Use Git attributes to set targeted files (located at `~/.config/git/attributes``
+ 	# when installed with npm).
+ 	# See https://www.npmjs.com/package/npm-merge-driver
+	# [merge "npm-merge-driver"]
+	# name = automatically merge npm lockfiles
+	# driver = npx npm-merge-driver merge %A %O %B %P
 [mergetool]
 	# Clean up backup files created by merge tools on tool exit
 	keepBackup = false
@@ -71,18 +98,36 @@
 	writeToTemp = true
 	# Auto-accept file prompts when launching merge tools
 	prompt = false
+[page]
+	# Use custom pager to get an better log on terminal.
+	# As this is an external tool it has to be installed.
+	# See https://github.com/so-fancy/diff-so-fancy
+	# show = diff-so-fancy | less --tabs=4 -RFX
 [pull]
 	# This is GREAT… when you know what you're doing and are careful
 	# not to pull --no-rebase over a local line containing a true merge.
 	# rebase = true
-	# WARNING! This option, which does away with the one gotcha of
+	# This option, which does away with the one gotcha of
 	# auto-rebasing on pulls, is only available from 1.8.5 onwards.
-	rebase = preserve
+	# rebase = preserve
+	# WARNING! This option, which is the latest variation, is only
+	# available from 2.18 onwards.
+	rebase = merges
 [push]
 	# Default push should only push the current branch to its push target, regardless of its remote name
 	default = upstream
 	# When pushing, also push tags whose commit-ishs are now reachable upstream
 	followTags = true
+[rebase]
+	# Rebase advanced usage.
+	# Automagically reorder and prefix your commands while doing an interactive
+	# rebase. This has to be used with `--fixup` and/or `--squash` options for
+	# `git commit`.
+	# autoSquash = true
+	# Automatically stash current WD and stage when running rebase
+	# then you won't have to manually `git stash push` and `git stash pop`
+	# after and before your rebase.
+	# autoStash = true
 [rerere]
 	# If, like me, you like rerere, uncomment these
 	# autoupdate = true

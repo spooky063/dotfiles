@@ -49,13 +49,14 @@ mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
 mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
 mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }
 
-tunnel() { cloudflared tunnel --url "$1"; }
-
-max_size() {:
+max_size() {
   if [ -f "$1" ]; then
     return 1;
   else
-      sudo du -ac "$1" 2>/dev/null | sort -rn | head -n 15 | awk 'function human(x){s="kMGTEPYZ";while(x>=1000 && length(s)>1){x/=1024; s=substr(s,2)}return int(x+0.5) substr(s,1,1)}{gsub(/^[0-9]+/, human($1)); print}';
+      sudo du -ac $1 2>/dev/null | sort -rn | head -n 15 | awk 'function human(x){s="kMGTEPYZ";while(x>=1000 && length(s)>1){x/=1024; s=substr(s,2)}return int(x+0.5) substr(s,1,1)}{gsub(/^[0-9]+/, human($1)); print}'
   fi
 }
 
+# Create a tunnel with cloudflare
+# Eg: tunnel http://localhost:8000
+tunnel() { [ -n "$1" ] && cloudflared tunnel --url "$1"; }

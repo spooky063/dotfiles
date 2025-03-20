@@ -56,7 +56,8 @@ syntax enable
 set background=dark
 set ruler
 set hidden
-set number
+"set number
+set relativenumber
 set laststatus=2
 set smartindent
 set st=4 sw=4 et

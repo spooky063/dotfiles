@@ -1,32 +1,34 @@
+#!/bin/bash
+
 # Include
-[ -r /etc/bashrc ] && source /etc/bashrc
-[ -r /etc/bash_completion ] && source /etc/bash_completion
-[ -r $HOME/.bash.aliases ] && source $HOME/.bash.aliases
-[ -r $HOME/.bash.functions ] && source $HOME/.bash.functions
+source_files=("/etc/bashrc" "/etc/bash_completion" "$HOME/.bash.aliases" "$HOME/.bash.functions")
+for file in "${source_files[@]}"; do
+    if [ -f "$file" ]; then source "$file"; fi
+done
 
 # Color Palette
 RESET='\033[0m'
-BOLD='\033[1m'
+#BOLD='\033[1m'
 
 ## Foreground
-BLACK='\033[38;5;0m'
+#BLACK='\033[38;5;0m'
 RED='\033[38;5;1m'
-GREEN='\033[38;5;2m'
+#GREEN='\033[38;5;2m'
 YELLOW='\033[38;5;3m'
 BLUE='\033[38;5;4m'
 MAGENTA='\033[38;5;5m'
 CYAN='\033[38;5;6m'
-WHITE='\033[38;5;7m'
+#WHITE='\033[38;5;7m'
 
 ## Background
-ON_BLACK='\033[48;5;0m'
-ON_RED='\033[48;5;1m'
-ON_GREEN='\033[48;5;2m'
-ON_YELLOW='\033[48;5;3m'
-ON_BLUE='\033[48;5;4m'
-ON_MAGENTA='\033[48;5;5m'
-ON_CYAN='\033[48;5;6m'
-ON_WHITE='\033[48;5;7m'
+#ON_BLACK='\033[48;5;0m'
+#ON_RED='\033[48;5;1m'
+#ON_GREEN='\033[48;5;2m'
+#ON_YELLOW='\033[48;5;3m'
+#ON_BLUE='\033[48;5;4m'
+#ON_MAGENTA='\033[48;5;5m'
+#ON_CYAN='\033[48;5;6m'
+#ON_WHITE='\033[48;5;7m'
 
 # GIT
 export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -34,9 +36,11 @@ export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch GIT_PS1_SHOWCO
 export GIT_PS1_HIDE_IF_PWD_IGNORED=1
 
 # PS1
-type __vcs_name &>/dev/null \
-  && export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED\$(__vcs_name) $CYAN\w $RESET\n$ " \
-  || export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED $CYAN\w $RESET\n$ "
+if type __vcs_name >/dev/null 2>&1; then
+    export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED\$(__vcs_name) $CYAN\w $RESET\n$ ";
+else
+    export PS1="$MAGENTA[\A] $YELLOW\u$RED@$BLUE\h$RED $CYAN\w $RESET\n$ ";
+fi
 
 # History
 export HISTSIZE=10000
@@ -46,8 +50,13 @@ shopt -s histappend
 PROMPT_COMMAND='history -a'
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+non_zero_files=("$NVM_DIR/nvm.sh" "$NVM_DIR/bash_completion")
+for file in "${non_zero_files[@]}"; do
+    if [ -s "$file" ]; then \. "$file"; fi
+done
 
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

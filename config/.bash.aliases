@@ -42,17 +42,32 @@ alias downloads='cd ~/Téléchargements'
 alias desktop='cd ~/Bureau'
 alias music='cd ~/Musique'
 alias videos='cd ~/Videos'
-
-alias www='cd /var/www'
 alias cds='cd ~; clear'
 
+# Move to parent directory
 alias ..='cd ..'
+alias 1.='cd ..'
 alias ...='cd ../..'
+alias 2.='cd ../..'
 alias ....='cd ../../..'
+alias 3.='cd ../../..'
 alias .....='cd ../../../..'
+alias 4.='cd ../../../..'
 alias ......='cd ../../../../..'
+alias 5.='cd ../../../../..'
 alias .......='cd ../../../../../..'
+alias 6.='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
+alias 7.='cd ../../../../../../..'
+
+# Clear log files
+alias clearlog='sudo find /var/log/ \( -iregex ".*\.[0-9]+" -o -iname "*.gz" \) -exec rm {} \;'
+
+# See 15 biggest file from system
+alias sd='sudo du -hs /* | sort -h | tail -15'
+
+# Docker
+alias dockerps='docker ps -as --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"'
 
 # Clear
 if [[ $EUID -eq 0 ]]; then
@@ -64,20 +79,3 @@ else
   alias dropram='echo "You must be a root user" 2>&1'
   alias dropswap='echo "You must be a root user" 2>&1'
 fi
-
-alias clearlog='sudo find /var/log/ \( -iregex ".*\.[0-9]+" -o -iname "*.gz" \) -exec rm {} \;'
-
-# SVN
-if which svn >/dev/null; then
-  if [ -f ~/.dotfiles/svn-color/svn-color.py ]; then
-    alias svn=~/.dotfiles/svn-color/svn-color.py
-  fi
-  
-  alias svnupdry='svn merge --dry-run -r BASE:HEAD .'
-  alias svn-remove='rm -rf `find . -type d -name .svn`'
-fi
-# Space disk                                                                    
-alias sd='sudo du -hs /* | sort -h | tail -15' # See 15 biggest file from system   
-                                                                               
-# Docker                                                                        
-alias dockerps='docker ps -as --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"'

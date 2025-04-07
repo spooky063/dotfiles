@@ -164,7 +164,7 @@
     { "path": "app", "color": "custom4" },
     { "path": "src", "color": "custom4" },
     { "path": "vendor", "color": "custom2" },
-    { "path": "node_modules", "color": "custom2" },
+    { "path": "node_modules", "color": "custom2" }
   ],
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
@@ -200,5 +200,5 @@
   "workbench.editor.enablePreview": false,
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultProfile.linux": "bash",
-  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.enableMultiLinePasteWarning": "never"
 }

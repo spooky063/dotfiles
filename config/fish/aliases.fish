@@ -42,15 +42,29 @@ alias downloads='cd ~/Téléchargements'
 alias desktop='cd ~/Bureau'
 alias music='cd ~/Musique'
 alias videos='cd ~/Videos'
+alias cds='cd ~; clear'
 
-alias www='cd /var/www'
-
+# Move to parent directory
 alias ..='cd ..'
+alias 1.='cd ..'
 alias ...='cd ../..'
+alias 2.='cd ../..'
 alias ....='cd ../../..'
+alias 3.='cd ../../..'
 alias .....='cd ../../../..'
+alias 4.='cd ../../../..'
 alias ......='cd ../../../../..'
+alias 5.='cd ../../../../..'
 alias .......='cd ../../../../../..'
+alias 6.='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
+alias 7.='cd ../../../../../../..'
 
+# Clear log files
 alias clearlog='sudo find /var/log/ \( -iregex ".*\.[0-9]+" -o -iname "*.gz" \) -exec rm {} \;'
+
+# See 15 biggest file from system
+alias sd='sudo du -hs /* | sort -h | tail -15'
+
+# Docker
+alias dockerps='docker ps -as --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"'

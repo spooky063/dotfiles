@@ -2,16 +2,16 @@
 # Put this in your ~/.gitconfig or ~/.config/git/config
 [user]
 	name = Guillaume Astier
-    email = astier.gui@gmail.com
-    signingkey = BBAB76C9B79748E1D40EAD9CD6756C102DFDF2A8
+	email = astier.gui@gmail.com
+	signingkey = BBAB76C9B79748E1D40EAD9CD6756C102DFDF2A8
 [commit]
-    gpgsign = true
+	gpgsign = true
 [color]
 	# Enable colors in color-supporting terminals
 	ui = auto
 [alias]
 	# List available aliases
-  	aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+	aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
 	# Command shortcuts
 	st = status
 	co = checkout
@@ -58,7 +58,7 @@
 	# Display submodule-related information (commit listings)
 	submodule = log
 	# Use VSCode as default diff tool when running `git diff-tool`
-  	tool = vscode
+	tool = vscode
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [fetch]
@@ -76,8 +76,8 @@
 	# Automatically --follow when given a single path
 	follow = true
 	# Disable decorate for reflog
-  	# (because there is no dedicated `reflog` section available)
-  	decorate = false
+	# (because there is no dedicated `reflog` section available)
+	decorate = false
 [merge]
 	# Display common-ancestor blocks in conflict hunks
 	# conflictStyle = diff3
@@ -87,8 +87,8 @@
 	# Custom/dedicated merge drive for npm lock files (`package-lock.json`).
 	# Also works with Yarn.
 	# Use Git attributes to set targeted files (located at `~/.config/git/attributes``
- 	# when installed with npm).
- 	# See https://www.npmjs.com/package/npm-merge-driver
+	# when installed with npm).
+	# See https://www.npmjs.com/package/npm-merge-driver
 	# [merge "npm-merge-driver"]
 	# name = automatically merge npm lockfiles
 	# driver = npx npm-merge-driver merge %A %O %B %P

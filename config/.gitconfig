@@ -155,3 +155,7 @@
 	prereleaseSuffix = .rc
 [init]
 	defaultBranch = main
+[safe]
+	directory = /home/gastier/lab/drupal-3249970
+	directory = /var/www/html
+

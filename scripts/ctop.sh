@@ -1,16 +1,27 @@
 #!/bin/bash
 
+get_latest_tag_by_repo() {
+    curl -s "https://api.github.com/repos/$1/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*'
+}
+
 install() {
-    local NAME='ctop'
-    local REPO='https://github.com/bcicen/ctop'
-
-    local VERSION=$(curl -s "https://api.github.com/repos/bcicen/ctop/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+    local REPOSITORY_NAME="bcicen/ctop"
+    local VERSION=$(get_latest_tag_by_repo "$REPOSITORY_NAME")
     local URL=''
-    printf -v URL "https://github.com/bcicen/ctop/releases/download/v%s/ctop-%s-linux-amd64" "${VERSION}" "${VERSION}"
+    printf -v URL "https://github.com/%s/releases/download/v%s/ctop-%s-linux-amd64" "${REPOSITORY_NAME}" "${VERSION}" "${VERSION}"
 
-    echo "Downloading: $URL"
-    sudo curl -L "$URL" -o /usr/local/bin/$NAME
-    sudo chmod +x /usr/local/bin/$NAME
+    sudo curl -sLo /usr/local/bin/ctop "$URL"
+
+    if [ ! -f /usr/local/bin/ctop ]; then
+        env GREP_COLORS='mt=01;31' grep --color=always -E '.*' <<< "Error while downloading file at: $URL"
+        exit 1
+    fi
+
+    sudo chmod +x /usr/local/bin/ctop
+
+    local COMMAND=$(ctop -v)
+    env GREP_COLORS='mt=01;32' grep --color=always -E '.*' <<< "ctop installed successfully"
+    echo "Version: $COMMAND"
 }
 
 install

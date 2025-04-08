@@ -2,7 +2,7 @@
 
 [ -x /usr/bin/wget ] || exit 0
 
-dir='/home/gastier/wallpaper.jpg'
+dir='/tmp/wallpaper.jpg'
 
 unsplash()
 {

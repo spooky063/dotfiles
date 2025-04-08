@@ -1,6 +1,6 @@
 current_dir = $(shell pwd)
 
-.PHONY: apt apt.update apt.upgrade apt.purge snap snap-stable snap-classic snap.update package.update docker docker-tools compose ctop code-settings code-extension code-extension.uninstall omf omf.config shell.config vundle wallpaper
+.PHONY: apt apt.update apt.upgrade apt.purge snap snap-stable snap-classic snap.update package.update docker docker-tools compose ctop lazygit code-settings code-extension code-extension.uninstall omf omf.config shell.config vundle wallpaper
 
 ## PACKAGE
 
@@ -52,6 +52,9 @@ compose:
 ctop:
 	/bin/bash ./scripts/ctop.sh
 
+lazygit:
+	/bin/bash ./scripts/lazygit.sh
+
 code-settings:
 	rm -f ~/.config/Code/User/settings.json
 	ln -s ${current_dir}/config/code/settings.json ~/.config/Code/User/settings.json
@@ -83,3 +86,12 @@ vundle:
 wallpaper:
 	/bin/bash ./scripts/wallpaper.sh
 	sudo ln -s ${current_dir}/scripts/wallpaper.sh /etc/rc.local
+
+toggle-light-dark-button:
+	sudo apt install python3-gi gir1.2-appindicator3-0.1
+	cp scripts/toggle-light-dark-button/light-dark-launcher.sh /usr/local/bin/light-dark-launcher.sh
+	cp scripts/toggle-light-dark-button/light-dark-switcher.py /usr/local/bin/light-dark-switcher.py
+	chmod +x /usr/local/bin/light-dark-switcher.py
+	nohup /usr/local/bin/light-dark-switcher.py &
+	mkdir -p ~/.config/autostart
+	cp scripts/toggle-light-dark-button/light-dark-entry.desktop ~/.config/autostart/light-dark-entry.desktop

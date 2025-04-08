@@ -4,12 +4,18 @@ get_latest_tag_by_repo() {
     curl -s "https://api.github.com/repos/$1/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*'
 }
 
+lowercase() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
 install() {
     local REPOSITORY_NAME="docker/compose"
     local VERSION=$(get_latest_tag_by_repo "$REPOSITORY_NAME")
+    local OS=$(lowercase $(uname -s))
     local URL=''
-    printf -v URL "https://github.com/%s/releases/download/v%s/docker-compose-linux-x86_64" "${REPOSITORY_NAME}" "${VERSION}"
+    printf -v URL "https://github.com/%s/releases/download/v%s/docker-compose-%s-%s" "${REPOSITORY_NAME}" "${VERSION}" "${OS}" "$(uname -m)"
 
+    echo "... downloading from $URL"
     sudo curl -sLo /usr/local/bin/docker-compose "$URL"
 
     if [ ! -f /usr/local/bin/docker-compose ]; then

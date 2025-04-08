@@ -4,12 +4,31 @@ get_latest_tag_by_repo() {
     curl -s "https://api.github.com/repos/$1/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*'
 }
 
+lowercase() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+arch() {
+    local arch="$(uname -m)"
+
+    case "$arch" in
+        x86_64) arch="amd64" ;;
+        aarch64 | arm64) arch="arm64" ;;
+        i386 | i686) arch="386" ;;
+        *) arch="unknown" ;;
+    esac
+
+    echo "${arch}"
+}
+
 install() {
     local REPOSITORY_NAME="bcicen/ctop"
     local VERSION=$(get_latest_tag_by_repo "$REPOSITORY_NAME")
+    local OS=$(lowercase $(uname -s))
     local URL=''
-    printf -v URL "https://github.com/%s/releases/download/v%s/ctop-%s-linux-amd64" "${REPOSITORY_NAME}" "${VERSION}" "${VERSION}"
+    printf -v URL "https://github.com/%s/releases/download/v%s/ctop-%s-%s-%s" "${REPOSITORY_NAME}" "${VERSION}" "${VERSION}" "${OS}" "$(arch)"
 
+    echo "... downloading from $URL"
     sudo curl -sLo /usr/local/bin/ctop "$URL"
 
     if [ ! -f /usr/local/bin/ctop ]; then

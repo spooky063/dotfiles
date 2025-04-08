@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/local/bin/light-dark-switcher.py
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Light Dark Switcher
+Comment=Switch between light and dark theme

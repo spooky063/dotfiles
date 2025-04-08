@@ -8,8 +8,9 @@ install() {
     local REPOSITORY_NAME="jesseduffield/lazygit"
     local VERSION=$(get_latest_tag_by_repo "$REPOSITORY_NAME")
     local URL=''
-    printf -v URL "https://github.com/%s/releases/download/v%s/lazygit_%s_Linux_x86_64.tar.gz" "${REPOSITORY_NAME}" "${VERSION}" "${VERSION}"
+    printf -v URL "https://github.com/%s/releases/download/v%s/lazygit_%s_%s_%s.tar.gz" "${REPOSITORY_NAME}" "${VERSION}" "${VERSION}" "$(uname -s)" "$(uname -m)"
 
+    echo "... downloading from $URL"
     sudo curl -sLo lazygit.tar.gz "$URL"
 
     if [ ! -f /usr/local/bin/ctop ]; then

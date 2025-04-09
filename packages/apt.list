@@ -17,3 +17,4 @@ gcc
 g++
 make
 build-essential
+folder-color

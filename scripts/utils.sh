@@ -5,7 +5,7 @@ lowercase() {
 }
 
 get_latest_tag_by_repo() {
-    curl -s "https://api.github.com/repos/$1/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*'
+    curl -s "https://api.github.com/repos/$1/releases/latest" | grep -Po '"tag_name": *"\K[^"]+' | sed 's/^v//'
 }
 
 arch() {

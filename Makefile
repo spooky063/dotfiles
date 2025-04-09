@@ -109,3 +109,7 @@ ui-toggle-light-dark: ##@ui Installs toggle light/dark button
 	nohup /usr/local/bin/light-dark-switcher.py &
 	mkdir -p ~/.config/autostart
 	cp scripts/toggle-light-dark-button/light-dark-entry.desktop ~/.config/autostart/light-dark-entry.desktop
+
+font-geist: ##@font Install Geist Mono
+	/bash/bin ./scripts/font.sh
+	sudo fc-cache -fv

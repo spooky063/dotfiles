@@ -102,6 +102,11 @@ make wallpaper
 make ui-toggle-light-dark
 ```
 
+```bash
+# Add the Geist Mono font
+make font-geist
+```
+
 ## Software
 
 ### Libre office

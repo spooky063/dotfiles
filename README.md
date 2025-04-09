@@ -1,7 +1,7 @@
 # Dotfile
 
-Dépôt pour gérer les différents paquets a installer.
-Utiliser les commandes make pour une gestion plus propre
+Repository for managing the different packages to install.
+Use the make commands for a more proper management.
 
 ```bash
 cd ~
@@ -9,106 +9,174 @@ git clone https://github.com/Spooky063/dotfiles.git .dotfile
 cd .dotfile
 ```
 
-## Prérequis
+## Prerequisites
 
 ```bash
-# Ajout des dépots
 sudo add-apt-repository -y ppa:git-core/ppa
 ```
 
-## Utilisation des commandes
+## Commands
 
 ```bash
-# Purge les paquets inutiles de l'installation de base
+# Purge all unused packages
 make apt.purge
 ```
 
 ```bash
-# Mise à jour du système et installation des packets lors du premier lancement
+# Update the system and install the packages at the first launch
 make apt.update
 
-# Met à jour les paquets
+# Update packages
 make apt.upgrade
 
-# Installe les paquets au travers du manager apt
+# Install package through the manager apt
 make apt
 ```
 
 ```bash
-# Installe des paquets au travers du manager snap
+# Install package through the manager snap
 make snap
 
-# Met à jour les paquets
+# Refresh snap packages
 make snap.update
 ```
 
 ```bash
-# Ajout de docker
+# Add docker
 make docker
 
-# Ajout des outils docker
+# Add extra tools for docker (docker-compose standalone, ctop)
 make docker-tools
 ```
 
 ```bash
-# Installe le fichier de configuration pour vscode
+# Add lazygit
+make lazygit
+```
+
+```bash
+## You can just connect to your github account or you can launch the command
+## -------------------------------------------------------------------------
+
+# Install the settings for code software
 make code-settings
 
-# Installe les extensions
+# Install plugins for code software
 make code-extension
 ```
 
 ```bash
-# Ajout de Oh my Fish!
+# Oh my Fish!
 rm -rf ~/.local/share/omf/
 
 make omf
 # OR
+
 curl -L https://get.oh-my.fish | fish
 omf theme default
 omf install godfather
 ```
 
 ```bash
-# Ajout des fichiers de configuration du système
+# Add shell configuration files
 make shell.config
 ```
 
 ```bash
-# Configuration de vim
+# Vim configuration
 make vundle
 ```
 
 ```bash
-# Ajout d'un wallpaper custom à chaque démarrage
+# Install the theme 'Aura' for terminal
+make term-theme
+```
+
+```bash
+# Add the bing wallpaper on startup
 make wallpaper
 ```
 
-## Outils de développement supplémentaire (optional)
+```bash
+# Add the toggle light/dark button on startup
+make toggle-light-dark-button
+```
+
+## Software
+
+### Libre office
+
+You can install it via the official website: https://www.libreoffice.org/download/download-libreoffice
+
+### Obsidian
+
+You can install it via the official website: https://obsidian.md/download
+
+### Brave
+
+> Source: https://brave.com/linux/#debian-ubuntu-mint
 
 ```bash
-# Installation de composer
+sudo apt install curl
+
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+sudo apt update
+
+sudo apt install brave-browser
+```
+
+## Development tool (optional)
+
+### Composer
+
+> Source: https://getcomposer.org/download/
+
+```bash
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 ```
 
+### Nodejs && npm && npx
+
+> Source: https://github.com/nodesource/distributions#installation-instructions
+
 ```bash
-# Installation de nodejs && npm && npx
-# Source : https://github.com/nodesource/distributions#installation-instructions
 cd ~
 curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt install -y nodejs gcc g++ make build-essential
 ```
 
+### Yarn
+
+> Source: https://yarnpkg.com/getting-started/install
+
 ```bash
-# Installation de yarn
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update
 sudo apt install -y yarn
 ```
 
+## Shell tools (optional)
+
+### Bashtop
+
+> Source: https://github.com/aristocratos/bashtop
+
 ```bash
-# Hide warning message for React/Angular hot-reloads files
+# Bashtop
+sudo add-apt-repository ppa:bashtop-monitor/bashtop
+sudo apt update
+sudo apt install bashtop
+```
+
+## Troubleshooting
+
+### Hide warning message for React/Angular hot-reloads files
+
+```bash
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```

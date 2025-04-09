@@ -1,8 +1,6 @@
 #!/bin/bash
 
-get_latest_tag_by_repo() {
-    curl -s "https://api.github.com/repos/$1/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*'
-}
+source ./utils.sh
 
 install() {
     local REPOSITORY_NAME="jesseduffield/lazygit"

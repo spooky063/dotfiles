@@ -1,9 +1,8 @@
 current_dir = $(shell pwd)
 
-.PHONY: apt apt.update apt.upgrade apt.purge snap snap-stable snap-classic snap.update package.update docker docker-tools compose ctop lazygit code-settings code-extension code-extension.uninstall omf omf.config shell.config vundle wallpaper
+.PHONY: apt apt.update apt.upgrade apt.purge snap snap-stable snap-classic snap.update package.update docker docker-tools compose ctop lazygit code-settings code-extension code-extension.uninstall omf omf.config shell.config vundle term-theme wallpaper toggle-light-dark-button
 
 ## PACKAGE
-
 apt:
 	cat packages/apt.list | xargs -n 1 sudo apt install -y
 
@@ -80,6 +79,9 @@ shell.config:
 vundle:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
+
+term-theme:
+	/bin/bash ./scripts/aura-terminal/aura-terminal.sh
 
 ## UI
 

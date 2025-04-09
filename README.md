@@ -1,9 +1,9 @@
 # Dotfile
 
 > [!IMPORTANT]  
-> Remember to save your $HOME/.ssh and put them back.
+> Remember to save your `$HOME/.ssh` folder and put them back.
 
-Repository for managing the different packages to install.
+Repository for managing the different packages to install.  
 Use the make commands for a more proper management.
 
 ```bash

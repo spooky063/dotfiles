@@ -62,7 +62,7 @@ make lazygit
 make code-settings
 
 # Install plugins for code software
-make code-extension
+make code-plugin
 ```
 
 ```bash
@@ -99,7 +99,7 @@ make wallpaper
 
 ```bash
 # Add the toggle light/dark button on startup
-make toggle-light-dark-button
+make ui-toggle-light-dark
 ```
 
 ## Software

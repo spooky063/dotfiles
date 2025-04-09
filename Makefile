@@ -19,7 +19,8 @@ apt.upgrade:
 	sudo apt autoremove -y
 
 apt.purge:
-	cat packages/purge.list | xargs -n 1 sudo apt-get purge
+	cat packages/purge.list | xargs -n 1 sudo apt-get purge -y
+	sudo apt autoremove -y
 
 snap: snap-stable snap-classic
 

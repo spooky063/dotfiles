@@ -128,6 +128,10 @@ sudo apt update
 sudo apt install brave-browser
 ```
 
+### Charles
+
+If you looking for a proxy tool, you can install Charles: https://www.charlesproxy.com/
+
 ## Development tool (optional)
 
 ### Composer

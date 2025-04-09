@@ -13,3 +13,7 @@ vim
 git-core
 pandoc
 fish
+gcc
+g++
+make
+build-essential

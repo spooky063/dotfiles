@@ -184,6 +184,19 @@ sudo apt update
 sudo apt install bashtop
 ```
 
+## Browser extensions
+
+- [Raindrop.io](https://chromewebstore.google.com/detail/raindropio/ldgfbffkinooeloadekpmfoklnobpien)
+- [Proton Pass](https://chromewebstore.google.com/detail/proton-pass-free-password/ghmbeldphafepmbegfdlkpapadhbakde)
+- [All fingerprint defender](https://chromewebstore.google.com/detail/all-fingerprint-defender/meojnmfhjkahlfcecpdcdgjclcilmaij)
+- [Privacy Badger](https://chromewebstore.google.com/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp)
+- [uBlock Origin Lite](https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh)
+
+No more available on Chrome Browser
+
+- [AutoplayStopper](https://chromewebstore.google.com/detail/autoplaystopper/ejddcgojdblidajhngkogefpkknnebdh)
+- [uBlock Origin](https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
+
 ## Troubleshooting
 
 ### Hide warning message for React/Angular hot-reloads files

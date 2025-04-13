@@ -7,10 +7,9 @@
 [commit]
 	gpgsign = true
 [color]
-	# Enable colors in color-supporting terminals
 	ui = auto
+	excludesFile = ~/.gitignore
 [alias]
-	# List available aliases
 	aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
 	# Command shortcuts
 	st = status
@@ -25,24 +24,22 @@
 	reword = commit --amend
 	uncommit = reset --soft HEAD~1
 	untrack = rm --cache --
-	# Or pre 2.5, as we didn't differential push and upstream in shorthands:
-	# review-local = lg @{upstream}..
 [core]
-	# Don't paginate output by default
+	autocrlf = input
 	pager = cat
 	#
 	# Out of luck: on Windows w/o msysGit? You may have Notepad++…
 	# editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
-	# 
+	#
 	# If you want to use Sublime Text 2's subl wrapper:
 	# editor = subl -w
-	# 
+	#
 	# Or Atom, perhaps:
 	editor = /usr/bin/vim
-	# 
+	#
 	# Sublime Text 2 on Windows:
 	# editor = 'c:/Program Files (x86)/Sublime Text 2/sublime_text.exe' -w
-	# 
+	#
 	# Sublime Text 3 on Windows:
 	# editor = 'c:/Program Files/Sublime Text 3/subl.exe' -w
 	#
@@ -155,7 +152,4 @@
 	prereleaseSuffix = .rc
 [init]
 	defaultBranch = main
-[safe]
-	directory = /home/gastier/lab/drupal-3249970
-	directory = /var/www/html
 

@@ -1,8 +1,9 @@
 .bash.aliases ~/.bash.aliases
 .bash.functions ~/.bash.functions
 .bashrc ~/.bashrc
-.gitconfig ~/.gitconfig
 .tmux.conf ~/.tmux.conf
 .vimrc ~/.vimrc
 fish ~/.config
+git/.gitconfig ~/.gitconfig
+git/.gitignore ~/.gitignore
 omf/themes/jd ~/.local/share/omf/themes

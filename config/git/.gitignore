@@ -1,0 +1,35 @@
+# Linux -- https://github.com/github/gitignore/blob/main/Global/Linux.gitignore
+*~
+
+# Windows -- https://github.com/github/gitignore/blob/main/Global/Windows.gitignore
+Thumbs.db
+
+# Mac OS -- https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
+.DS_Store
+
+# Vagrant -- https://github.com/github/gitignore/blob/main/Global/Vagrant.gitignore
+.vagrant/
+
+# Node
+node_modules/
+jspm_packages/
+.npm
+.eslintcache
+.stylelintcache
+
+# PHPStorm
+.idea/
+
+# Composer
+vendor/
+
+# Logs
+logs/
+*.log
+
+# Env
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local

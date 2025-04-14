@@ -110,6 +110,11 @@ make ui-toggle-light-dark
 make font-geist
 ```
 
+```bash
+# Disable the dock
+make hide-dock
+```
+
 ## Software
 
 ### Libre office

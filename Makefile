@@ -14,7 +14,7 @@ HELP_FUN = \
         print "\n"; \
     }
 
-.PHONY: apt apt.update apt.upgrade apt.purge snap snap-stable snap-classic snap.update package.update docker docker-tools compose ctop lazygit code-settings code-plugin code-plugin.remove omf omf.config shell.config vundle term-theme wallpaper ui-toggle-light-dark
+.PHONY: apt apt.update apt.upgrade apt.purge snap snap-stable snap-classic snap.update package.update docker docker-tools compose ctop lazygit code-settings code-plugin code-plugin.remove omf omf.config shell.config vundle term-theme wallpaper ui-toggle-light-dark hide-dock
 
 help:
 	@perl -e '$(HELP_FUN)' $(MAKEFILE_LIST)
@@ -113,3 +113,6 @@ ui-toggle-light-dark: ##@ui Installs toggle light/dark button
 font-geist: ##@font Install Geist Mono
 	/bin/bash ./scripts/font.sh
 	sudo fc-cache -fv
+
+hide-dock:
+	gnome-extensions disable ubuntu-dock@ubuntu.com

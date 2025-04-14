@@ -21,14 +21,23 @@ alias del='rm'
 alias dir='ls -la'
 
 # Listing
-alias ls='ls -F --color=always'
-alias ll='ls -lSrh'
-alias lt='ls -alt'
-alias la='ls -A'
-alias lla='ls -Alh'
-alias lat='ls -alt'
-alias ltr='ls -altr'
-alias latr='ls -altr'
+if type -q eza
+    #alias ls='eza --time-style "+%Y-%m-%d %H:%M"'
+    alias ll='eza --git -glSrh --time-style "+%Y-%m-%d %H:%M"'
+    alias la='eza --git -gA --time-style "+%Y-%m-%d %H:%M"'
+    alias lla='eza --git -gAlh --time-style "+%Y-%m-%d %H:%M"'
+    alias lat='eza --git -gAl --sort newest --time-style "+%Y-%m-%d %H:%M"'
+    alias latr='eza --git -gAl --sort oldest --time-style "+%Y-%m-%d %H:%M"'
+
+    alias tree='eza -lah --total-size --color always --time-style "+%Y-%m-%d %H:%M" --icons=never -T'
+else
+    alias ls='ls -F --color=always'
+    alias ll='ls -lSrh'
+    alias la='ls -A'
+    alias lla='ls -Alh'
+    alias lat='ls -alt'
+    alias latr='ls -altr'
+end
 
 # System
 alias shutdown='sudo systemctl poweroff -i'

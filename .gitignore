@@ -1,3 +1,5 @@
 config/fish/fishd.gastier
 config/fish/conf.d/omf.fish
 config/fish/functions/fish_prompt.fish
+
+*.dconf

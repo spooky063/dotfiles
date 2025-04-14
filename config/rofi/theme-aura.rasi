@@ -1,0 +1,57 @@
+configuration {
+    modi: "run,drun,window";
+	font: "Geist Mono 12";
+}
+
+@theme "/dev/null"
+
+* {
+    background: #2E2E2E;
+    foreground: #FFFFFF;
+    border-color: #9C4DFF;
+    urgent-border-color: #FF0000;
+    border: 2px;
+    border-radius: 5px;
+    padding: 5px;
+    spacing: 2;
+    highlight-border: 2px;
+    highlihgt-color: #6A4CFF;
+}
+
+window {
+    background-color: #2E2E2E;
+    border: 2px;
+    border-color: #9C4DFF;
+    border-radius: 8px;
+}
+
+listview {
+    background-color: #2E2E2E;
+    border: 2px;
+    border-color: #9C4DFF;
+    border-radius: 8px;
+}
+
+element {
+    background-color: transparent;
+    text-color: #FFFFFF;
+    border: 1px;
+    border-color: transparent;
+}
+
+element selected {
+    background-color: #6A4CFF;
+    text-color: #FFFFFF;
+    border: 1px;
+    border-color: #6A4CFF;
+}
+
+element normal {
+    background-color: transparent;
+    text-color: #A0A0A0;
+}
+
+element urgent {
+    background-color: #FF0000;
+    text-color: #FFFFFF;
+}

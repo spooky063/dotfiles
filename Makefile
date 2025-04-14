@@ -111,5 +111,5 @@ ui-toggle-light-dark: ##@ui Installs toggle light/dark button
 	cp scripts/toggle-light-dark-button/light-dark-entry.desktop ~/.config/autostart/light-dark-entry.desktop
 
 font-geist: ##@font Install Geist Mono
-	/bash/bin ./scripts/font.sh
+	/bin/bash ./scripts/font.sh
 	sudo fc-cache -fv

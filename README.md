@@ -8,14 +8,14 @@ Use the make commands for a more proper management.
 
 ```bash
 cd ~
-git clone https://github.com/Spooky063/dotfiles.git .dotfile
+git clone https://github.com/spooky063/dotfiles.git .dotfile
 cd .dotfile
 ```
 
 ## Prerequisites
 
 ```bash
-sudo add-apt-repository -y ppa:git-core/ppa
+sudo apt install git
 ```
 
 ## Commands
@@ -198,6 +198,29 @@ No more available on Chrome Browser
 - [uBlock Origin](https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
 
 ## Troubleshooting
+
+### Github
+
+```bash
+ssh -T git@github.com
+
+# Not Good
+# sign_and_send_pubkey: signing failed for ED25519 "email@example.com" from agent: agent refused operation
+```
+
+To resolve this issue
+
+```bash
+# Execution with bash prompt
+eval "$(ssh-agent -s)"
+sudo chmod 600 ~/.ssh/github
+ssh-add ~/.ssh/github
+
+ssh -T git@github.com
+
+# Good
+# Hi spooky063! You've successfully authenticated, but GitHub does not provide shell access.
+```
 
 ### Hide warning message for React/Angular hot-reloads files
 

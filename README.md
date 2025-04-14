@@ -1,7 +1,7 @@
 # Dotfile
 
 > [!IMPORTANT]  
-> Remember to save your `$HOME/.ssh` folder and put them back.
+> Remember to save your `$HOME/.ssh` and `$HOME/.gnupg` folder and put them back.
 
 Repository for managing the different packages to install.  
 Use the make commands for a more proper management.
@@ -10,6 +10,8 @@ Use the make commands for a more proper management.
 cd ~
 git clone https://github.com/spooky063/dotfiles.git .dotfile
 cd .dotfile
+
+# Think to change the remote to git@github.com:spooky063/dotfiles.git after Git configuration
 ```
 
 ## Prerequisites

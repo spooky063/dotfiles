@@ -12,6 +12,7 @@ gnupg-agent
 vim
 git-core
 pandoc
+lynx
 fish
 gcc
 g++

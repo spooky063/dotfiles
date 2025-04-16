@@ -121,11 +121,13 @@ make hide-dock
 
 ### Libre office
 
-You can install it via the official website: https://www.libreoffice.org/download/download-libreoffice
+You can install it via the official website: https://www.libreoffice.org/download/download-libreoffice  
+Only **writer** is necessary.
 
 ### Obsidian
 
-You can install it via the official website: https://obsidian.md/download
+You can install it via the official website: https://obsidian.md/download  
+Clone your repository (or put your backup) into `~/Documents/Obsidian Vault` to restore your session (don't forget `~/Documents/Obsidian Vault/.obsidian` folder to restore configuration).
 
 ### Brave
 

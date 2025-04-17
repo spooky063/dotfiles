@@ -72,8 +72,8 @@
 
 # Under github folder
 [includeIf "gitdir:**/github/**/.git"]
-    path = config.personal.github
+	path = config.personal.github
 
 # Under gitlab folder
 [includeIf "gitdir:**/gitlab/**/.git"]
-    path = config.personal.gitlab
+	path = config.personal.gitlab

@@ -4,6 +4,5 @@
 .tmux.conf ~/.tmux.conf
 .vimrc ~/.vimrc
 fish ~/.config
-git/.gitconfig ~/.gitconfig
-git/.gitignore ~/.gitignore
+git ~/.config
 omf/themes/jd ~/.local/share/omf/themes

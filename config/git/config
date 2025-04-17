@@ -1,0 +1,79 @@
+# https://gist.githubusercontent.com/tdd/470582/raw/7f20c0e41426270ffecbccb188ebdca5e4ff2e66/gitconfig.ini
+# Put this in your ~/.config/git/config
+[color]
+	ui = auto
+	excludesFile = ~/.gitignore
+[alias]
+	aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+	st = status
+	co = checkout
+	ci = commit
+	lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+	oops = commit --amend --no-edit
+	review-local = "!git lg @{push}.."
+	rl = reflog show HEAD -30
+	push-with-lease = push --force-with-lease
+	rebase-with-hooks = rebase -x 'git reset --soft HEAD~1 && git commit -C HEAD@{1}'
+	reword = commit --amend
+	uncommit = reset --soft HEAD~1
+	untrack = rm --cache --
+[core]
+	autocrlf = input
+	pager = cat
+	editor = /usr/bin/vim
+	whitespace = -trailing-space
+[diff]
+	mnemonicPrefix = true
+	renames = true
+	wordRegex = .
+	submodule = log
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[fetch]
+	recurseSubmodules = on-demand
+[grep]
+	break = true
+	heading = true
+	lineNumber = true
+	extendedRegexp = true
+[log]
+	abbrevCommit = true
+	follow = true
+	decorate = false
+[merge]
+	ff = false
+[mergetool]
+	keepBackup = false
+	keepTemporaries = false
+	writeToTemp = true
+	prompt = false
+[pull]
+	rebase = merges
+[push]
+	default = upstream
+	followTags = true
+[status]
+	submoduleSummary = true
+	showUntrackedFiles = all
+[color "branch"]
+	upstream = cyan
+[tag]
+	sort = version:refname
+[versionsort]
+	prereleaseSuffix = -pre
+	prereleaseSuffix = .pre
+	prereleaseSuffix = -beta
+	prereleaseSuffix = .beta
+	prereleaseSuffix = -rc
+	prereleaseSuffix = .rc
+[init]
+	defaultBranch = main
+
+# Under github folder
+[includeIf "gitdir:**/github/**/.git"]
+    path = config.personal.github
+
+# Under gitlab folder
+[includeIf "gitdir:**/gitlab/**/.git"]
+    path = config.personal.gitlab

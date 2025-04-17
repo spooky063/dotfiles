@@ -1,0 +1,7 @@
+[user]
+	name = Guillaume Astier
+	email = astier.gui@gmail.com
+	signingkey = BBAB76C9B79748E1D40EAD9CD6756C102DFDF2A8
+
+[commit]
+	gpgsign = true

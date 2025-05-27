@@ -8,6 +8,7 @@
 	st = status
 	co = checkout
 	ci = commit
+	cl = clone --depth=1
 	lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
 	oops = commit --amend --no-edit
 	review-local = "!git lg @{push}.."

@@ -49,11 +49,16 @@
 	writeToTemp = true
 	prompt = false
 [pull]
-	rebase = merges
+	rebase = true
 [push]
 	default = upstream
 	followTags = true
+[rebase]
+	autoStash = true
+	missingCommitsCheck = warn
 [status]
+	branch = true
+	showStash = true
 	submoduleSummary = true
 	showUntrackedFiles = all
 [color "branch"]
@@ -69,6 +74,13 @@
 	prereleaseSuffix = .rc
 [init]
 	defaultBranch = main
+
+# Git clone aliases
+[url "git@github.com"]
+	insteadOf = "gh:"
+
+[url "git@gitlab.com"]
+	insteadOf = "gl:"
 
 # Under github folder
 [includeIf "gitdir:**/github/**/.git"]

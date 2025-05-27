@@ -180,6 +180,17 @@ sudo apt update
 sudo apt install -y yarn
 ```
 
+## Custom shortcut keyboard
+
+| Name | Command | Shortcut |
+| --- | --- | --- |
+| Fichiers | nautilus | Super + n |
+| Firefox | /usr/bin/firefox | Super + b |
+| Rofi desktop | /usr/bin/rofi -show drun -theme /home/gastier/.dotfile/config/rofi/theme-aura.rasi | Super + f |
+| Rofi window | /usr/bin/rofi -show window -theme /home/gastier/.dotfile/config/rofi/theme-aura.rasi | Super + w |
+| Terminal | gnome-terminal | Super + Enter |
+| VsCode | /usr/bin/code | Super + e |
+
 ## Shell tools (optional)
 
 ### Bashtop

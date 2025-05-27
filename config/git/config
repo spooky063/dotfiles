@@ -76,10 +76,10 @@
 	defaultBranch = main
 
 # Git clone aliases
-[url "git@github.com"]
+[url "git@github.com:"]
 	insteadOf = "gh:"
 
-[url "git@gitlab.com"]
+[url "git@gitlab.com:"]
 	insteadOf = "gl:"
 
 # Under github folder

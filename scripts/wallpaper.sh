@@ -13,6 +13,11 @@ bing() {
   wget -qO ${dir} "http://www.bing.com/$(wget -q -O- https://binged.it/2ZButYc | sed -e 's/<[^>]*>//g' | cut -d / -f2 | cut -d \& -f1)"
 }
 
+nasa() {
+  url=$(curl -s "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY" | grep -oP '(?<="hdurl":")[^"]+')
+  [ -n "$url" ] && wget -qO "${dir}" "$url"
+}
+
 bing
 gsettings set org.gnome.desktop.background picture-uri file://${dir}
 

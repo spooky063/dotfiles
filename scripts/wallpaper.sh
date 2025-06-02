@@ -14,8 +14,8 @@ bing() {
 }
 
 nasa() {
-  url=$(curl -s "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY" | grep -oP '(?<="hdurl":")[^"]+')
-  [ -n "$url" ] && wget -qO "${dir}" "$url"
+  url=$(wget -q -O- https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY | grep -oP '(?<="hdurl":")[^"]+')
+  [ -n "$url" ] && wget -qO ${dir} "$url"
 }
 
 bing
